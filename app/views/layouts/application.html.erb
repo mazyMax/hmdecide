@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Helpmedecide</title>
+    <title>Help me Decide!</title>
+    <%= stylesheet_link_tag 'application', 'media' => 'all' %>
+    
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script>
+   $('.dropdown-toggle').dropdown()
+    </script>
   </head>
-
   <body>
-    <%= yield %>
+    
+      <%= render 'home/navbar' %>
+      <div class="container">
+          
+      <%= render 'home/flash' %>
+         <%= yield %>     
+      </div>     
   </body>
 </html>
