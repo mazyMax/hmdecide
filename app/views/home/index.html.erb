@@ -1,2 +1,25 @@
 <h1>HelpMeDecide</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <section class="post">
+      <div class="user">
+    <div class="avatar">
+      <%= image_tag ("snoopy.jpg") %>
+    </div>
+    <div class="username">
+      <%= post.user.username %>
+    </div>
+      </div>
+  
+  
+      <% if post.image.attached? %>
+       <image src="<%= (url_for(post.image))%>">
+           <% end %></image>
+    <div class="description">
+    <%= post.description %>
+    </div>
+    </section>
+  <% end %>
+</div>

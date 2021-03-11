@@ -26,7 +26,7 @@
               <li><%= link_to "Log Out", destroy_user_session_path, method: :delete%></li>
               <li><%= link_to "Update Account", edit_user_registration_path %></li>
               <li><%= link_to "Profile", user_path(current_user)%></li>
-              <li><%= link_to "New Vote", root_path%></li>
+              <li><%= link_to "New Vote", new_post_path%></li>
           <% else %>
               <li><%= link_to "Sign Up", new_user_registration_path%></li>
               <li><%= link_to "Log In", new_user_session_path%></li>

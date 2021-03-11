@@ -14,7 +14,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>12</span> posts</li>
+        <li><span>2</span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
@@ -44,13 +44,11 @@
 </div>
 
 <div class="user-images">
-  <div class="wrapper">
-    <%= image_tag ("chiken.jpg") %>
-  </div>
-  <div class="wrapper">
-    <%= image_tag ("pizza.jpg") %>
-  </div>
-  <div class="wrapper">
-    <%= image_tag ("steak2.jpg") %>
-  </div>
+   <% Post.all.each do |post| %>
+    <div class="wrapper">
+      <% if post.image.attached? %>
+        <image src="<%= (url_for(post.image))%>"></image>
+          <% end %>
+    </div>
+  <% end %>
 </div>
