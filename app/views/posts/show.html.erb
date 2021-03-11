@@ -1,0 +1,72 @@
+<div class="post-show row">
+  <div class="col-md-8">
+    
+      <td>
+          <%= image_tag ("bird.jpg")%>
+          <input type="radio" name="option" checked="checked"/>To Kill a Mockingbird
+	  </td>
+      <td>
+          <%= image_tag ("harry.jpg")%>
+          <input type="radio" name="option" checked="checked"/>Harry Potter
+	  </td>
+      <td>
+          <%= image_tag ("moby.jpg")%>
+          <input type="radio" name="option" checked="checked"/>Moby Dick
+	  </td>
+      <tr>
+		<td><p>
+			<input type="submit" value="Vote" οnclick="vote()"/>		
+		</td>
+	  </tr>
+  </div>
+  <div class="col-md-4">
+    <div class="user">
+      <div class="avatar">
+        <div class="avatar">
+      <%= image_tag ("snoopy.jpg") %>
+        </div>
+      </div>
+      <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
+    </div>
+    <div class="description">
+      <%= @post.description %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	
+	function vote(){	
+		for(var i = 0; i < document.getElementsByName("option").length; i++){		
+
+			if(document.getElementsByName("option")[i].checked == true){
+
+				var width = document.getElementById(i).style.width;	
+
+				width = parseInt(width);
+
+				width += 3;
+
+				document.getElementById(i).style.width = width+"px";
+				
+
+				var label = "label"+i;
+
+				var num = document.getElementById(label).innerText;
+
+				document.getElementById(label).innerText = ++num;
+
+			}
+
+		}
+		//alert("Success!");	
+	}
+</script>
+
+
+
+<div class="delete">
+  <% if current_user.posts.exists?(@post.id) %>
+    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

@@ -14,12 +14,15 @@
       </div>
   
   
-      <% if post.image.attached? %>
-       <image src="<%= (url_for(post.image))%>">
-           <% end %></image>
+  <% if post.image.attached? %>
+           <%= link_to(image_tag(url_for(post.image)), post_path(2)) %>
+           <% end %>
+        
     <div class="description">
     <%= post.description %>
     </div>
+
+      
     </section>
   <% end %>
 </div>

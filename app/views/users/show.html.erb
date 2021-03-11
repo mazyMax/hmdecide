@@ -46,9 +46,11 @@
 <div class="user-images">
    <% Post.all.each do |post| %>
     <div class="wrapper">
+       
       <% if post.image.attached? %>
-        <image src="<%= (url_for(post.image))%>"></image>
-          <% end %>
+        <%= link_to(image_tag(url_for(post.image)), post_path(1)) %>
+          
+        <% end %>
     </div>
   <% end %>
 </div>
