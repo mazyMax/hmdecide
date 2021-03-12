@@ -25,6 +25,12 @@
     <td><%= button_to 'Vote', upvote_post_path(@post), method: :post %></td>
       </tr>
       
+      <br>    
+    <%= radio_button_tag(:age, "child") %>
+    <%= label_tag(:age_child, "I am younger than 21") %>
+    <%= radio_button_tag(:age, "adult") %>
+    <%= label_tag(:age_adult, "I'm over 21") %>
+   
   </div>
   <div class="col-md-4">
     <div class="user">
