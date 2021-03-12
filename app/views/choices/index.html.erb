@@ -1,0 +1,28 @@
+<p>Test</p>
+
+<table class="table table-striped col-md-12" id="movies">
+  
+  <tbody>
+    <% @choices.each do |choice| %>
+      
+        <td>
+            <%= link_to like_choice_path(choice), method: :put, remote: true do %>
+            Like
+           <%= choice.get_upvotes.size%>
+            <% end %>
+        </td>
+        <td>
+            <%= link_to unlike_choice_path(choice), method: :put do %>
+            Unlike
+           <%= choice.get_downvotes.size%>
+            <% end %>
+        </td>
+        <td>
+            Percentage:
+          <%= choice.get_upvotes.size.to_f/choice.weighted_total %>
+        </td>
+       
+      
+    <% end %>
+  </tbody>
+</table>

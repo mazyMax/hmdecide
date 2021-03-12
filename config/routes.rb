@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     
     resources :choices do
         member do
-            put "Like" => "choices#upvote"
-            put "Unlike" => "choices#downvote"
+            put "like" => "choices#upvote"
+            put "unlike" => "choices#downvote"
         end
     end
-    resources :choices, only: [:new, :show, :create]
+    #resources :choices, only: [:new, :show, :create]
 end

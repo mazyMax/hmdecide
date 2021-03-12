@@ -1,6 +1,11 @@
 class ChoicesController < ApplicationController
+    
+    def show
+        id = params[:id]
+        @choice = Choice.find(id)
+    end
+    
     def new
-        @choice = Choice.new
     end
     
     def create
@@ -16,25 +21,27 @@ class ChoicesController < ApplicationController
         
     end
     
-    
-    
     def index
         @choices = Choice.all
     end
-
-    def show
-        id = params[:id]
-        @choice = Choice.find(id)
-    end
+    
+    def update
+        @choice = Choice.find params[:id]
+        @choice.update_attributes!(choice_params)
+        redirect_to root_path
+  end
+    
     
     def upvote
+        @choice = Choice.find params[:id]
         @choice.upvote_from current_user
-        redirect_to post_path(2)
+        redirect_to root_path
     end
     
     def downvote
+        @choice = Choice.find params[:id]
         @choice.downvote_from current_user
-        redirect_to post_path(2)
+        redirect_to root_path
     end
     
     private
