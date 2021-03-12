@@ -19,6 +19,12 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     end
     
+    def upvote
+      @post = Post.find(params[:id])
+      @post.pvotes.create
+      redirect_to(root_path)
+   end
+    
     private
     def post_params
       params.require(:post).permit(:description, :image, :user_id)

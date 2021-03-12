@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   get 'home/about'
     resources :users, only: [:show, :edit, :update]
     resources :posts, only: [:new, :create, :show, :destroy]
+    resources :posts do
+      member do
+    post 'upvote'
+      end
+    end
 end

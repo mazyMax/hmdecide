@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
     belongs_to :user
     has_one_attached :image
-    
+    has_many :pvotes, dependent: :destroy
     validate :image_presence
     
     def image_presence

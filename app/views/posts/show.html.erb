@@ -18,6 +18,13 @@
 			<input type="submit" value="Vote" οnclick="vote()"/>		
 		</td>
 	  </tr>
+      
+      <tr>
+    <td>TestTest</td>
+    <td><%= pluralize(@post.pvotes.count, "vote") %></td>
+    <td><%= button_to 'Vote', upvote_post_path(@post), method: :post %></td>
+      </tr>
+      
   </div>
   <div class="col-md-4">
     <div class="user">
