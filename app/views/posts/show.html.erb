@@ -15,7 +15,7 @@
 	  </td>
       <tr>
 		<td><p>
-			<input type="submit" value="Vote" οnclick="vote()"/>		
+			<input type="submit" value="Vote"/>		
 		</td>
 	  </tr>
   </div>
@@ -34,39 +34,11 @@
   </div>
 </div>
 
-<script type="text/javascript">
-	
-	function vote(){	
-		for(var i = 0; i < document.getElementsByName("option").length; i++){		
-
-			if(document.getElementsByName("option")[i].checked == true){
-
-				var width = document.getElementById(i).style.width;	
-
-				width = parseInt(width);
-
-				width += 3;
-
-				document.getElementById(i).style.width = width+"px";
-				
-
-				var label = "label"+i;
-
-				var num = document.getElementById(label).innerText;
-
-				document.getElementById(label).innerText = ++num;
-
-			}
-
-		}
-		//alert("Success!");	
-	}
-</script>
 
 
 
 <div class="delete">
   <% if current_user.posts.exists?(@post.id) %>
-    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-primary' %>
   <% end %>
 </div>
