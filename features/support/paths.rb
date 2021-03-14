@@ -19,7 +19,19 @@ module NavigationHelpers
     
     when /^the log in\s?page$/ then '/users/sign_in'
         
+    when /^the about\s?page$/ then '/home/about'
+        
+    when /^the profile\s?page$/ then '/home/about'
+        
     when /^the post_vote\s?page$/ then '/posts/new'
+        
+    when /^the forget password\s?page$/ then '/users/password/new'
+        
+    when /^the forget password\s?page$/ then '/users/password'
+        
+    when /^the profile\s?page$/ then /\/users\/password\/\d/
+        
+    when /^the edit profile\s?page$/ then /\/users\/password\/\d+\/edit/
         
     #when /^the signed in\s?page$/ then '/users/sign_in'
 

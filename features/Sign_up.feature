@@ -48,3 +48,9 @@ Scenario: Sign up for a new account with unmatched password confirmation
     And I fill in "Password confirmation" with "4156"
     And I press "Sign up"
     Then I should see "Password confirmation doesn't match Password"
+    
+Scenario: Redirect to log in
+    Given I am on the sign up page
+    Then I should see "Log in"
+    Then I follow "Log in"
+    Then I should be on the log in page

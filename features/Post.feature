@@ -12,6 +12,7 @@ Background:
     
 #reference: https://gist.github.com/AbbyJonesDev/6855281
 #https://stackoverflow.com/questions/3724487/rails-root-directory-path
+#delete the drop down menu will fix this first scenario
 Scenario: Post a new vote successfully
     Given I am on the home page
     And I follow "New Vote"
@@ -23,6 +24,7 @@ Scenario: Post a new vote successfully
     And I should see "Which book"
     And I should see "harry.jpg"
 
+# this scenario fails because there is no name for adding post description
 Scenario: Post a new vote without image
     Given I am on the post_vote page
     And I fill in "Description" with "Which book"

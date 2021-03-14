@@ -56,7 +56,7 @@
         "lines": [
           1,
           1,
-          10,
+          22,
           null,
           null,
           1,
@@ -177,7 +177,7 @@
         }
       }
     },
-    "timestamp": 1615660653
+    "timestamp": 1615706212
   },
   "RSpec": {
     "coverage": {
