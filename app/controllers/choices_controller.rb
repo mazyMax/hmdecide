@@ -1,4 +1,9 @@
 class ChoicesController < ApplicationController
+    before_action :authenticate_user!
+     def index
+        @choices = Choice.all
+    end
+    
     
     def show
         id = params[:id]
@@ -21,21 +26,18 @@ class ChoicesController < ApplicationController
         
     end
     
-    def index
-        @choices = Choice.all
-    end
-    
+   
     def update
         @choice = Choice.find params[:id]
         @choice.update_attributes!(choice_params)
-        redirect_to root_path
-  end
+        redirect_back(fallback_location: root_path)  
+    end
     
     
     def upvote
         @choice = Choice.find params[:id]
         @choice.upvote_from current_user
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
     end
     
     def downvote

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!
     def create
       Post.create(post_params)
-      redirect_to root_path
+      redirect_to new_choice_path
     end
     
     def index

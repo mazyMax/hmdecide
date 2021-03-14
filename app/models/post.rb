@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-    has_many :choices, dependent: :destroy
+    #has_many :choices, dependent: :destroy
     belongs_to :user
     has_one_attached :image
     

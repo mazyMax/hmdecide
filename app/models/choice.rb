@@ -1,10 +1,10 @@
 class Choice < ApplicationRecord
-    belongs_to :post
-    has_one_attached :image
+    #belongs_to :post
+    has_one_attached :images
     acts_as_votable
     
     validate :image_presence
       def image_presence
-        errors.add(:image, "can't be blank") unless image.attached?
+        errors.add(:images, "can't be blank") unless images.attached?
       end
 end
