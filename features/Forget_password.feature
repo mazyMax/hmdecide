@@ -31,6 +31,7 @@ Scenario: Existing email is used
     Then I should see "Email"
     And I fill in "Email" with "728977862@qq.com"
     And I press "Send me reset password instructions"
+    And I shoule see "You will receive an email with instructions on how to reset your password in a few minutes."
     # this should be filled after the logout function is finished
     # something like Then I can see "instruction is sent."
     # current bug will be fixed once the link of this button is added

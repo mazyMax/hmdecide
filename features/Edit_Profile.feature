@@ -1,4 +1,4 @@
-Feature: I can visit a user's detailed profile
+Feature: I can edit my profile
 Background:
     Given the following users exist:
     | email              | password           |created_at         |updated_at          |
@@ -12,6 +12,7 @@ Scenario: Change personal information
 	And I fill in "Password" with "4156GOGOGO"
 	And I press "Log in"
     Then I follow "Profile"
+    Then I follow "Edit Profile"
     Then I should see "Change Password"
     And I should see "Authorized Applications"
     And I should see "Email and SMS"
@@ -35,7 +36,7 @@ Scenario: Change personal information
     And I fill in "Email" with "yaningling0323@gmail.com"
     And I fill in "Phone" with "3107760015"
     And I fill in "Gender" with "Male"
-    Then I press "Submit"
+    Then I press "Submit!"
     Then I should be on the profile page
     # other conditions needs to be added
     And I should see "Profile is successfully edited."
@@ -46,7 +47,7 @@ Scenario: Change personal information with invalid email address
 	And I fill in "Password" with "4156GOGOGO"
 	And I press "Log in"
     Then I follow "Profile"
-    
+    Then I follow "Edit Profile"
     # change a profile photo
     Then I fill in "Name" with "Yanhao"
     And I fill in "Username" with "CrazyPenguin"
@@ -55,8 +56,8 @@ Scenario: Change personal information with invalid email address
     And I fill in "Email" with "yaningling0323"
     And I fill in "Phone" with "3107760015"
     And I fill in "Gender" with "Male"
-    Then I press "Submit"
-    Then I should be on the profile page
+    Then I press "Submit!"
+    #Then I should be on the profile page
     # other conditions needs to be added
     And I should see "The email address is invalid."
     

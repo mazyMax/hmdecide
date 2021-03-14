@@ -5,7 +5,7 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
-    def show
-      @posts = current_user.posts.order(created_at: :desc)
-    end
+    #def show
+     # @posts = current_user.posts.order(created_at: :desc)
+    #end
 end

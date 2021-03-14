@@ -1,12 +1,15 @@
 <p>Choice Create</p>
 <%= form_for Choice.new do |f| %>
   <div class="form-group">
+      <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
   <div class="form-group">
+      <%= f.label :images %>
     <%= f.file_field :images %>
   </div>
     <div class="form-group">
+        <%= f.label :tid %>
     <%= f.text_field :topic_id %>
   </div>
     <br>

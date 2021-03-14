@@ -63,7 +63,7 @@ Scenario: Log out
     
     Then I should not see "Sign Up"
     Then I should not see "Log In"
-    Then I follow "Log Out"
+    Then I press "Log Out"
     Then I should be on the home page
     Then I should see "Signed out successfully."
     Then I should see "Log In"

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-describe User do
+
+describe "User" do
     User.new
     User.destroy_all 
     test1 = FactoryBot.create(:user,
