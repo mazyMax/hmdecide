@@ -8,6 +8,7 @@ Rails.application.configure do
   config.cache_classes = false
   #config.hosts << "wheel-eagle-3000.codio.io"
   config.hosts << "spend-linear-3000.codio.io"
+    config.hosts << "hilton-scale-3000.codio.io"
   # Do not eager load code on boot.
   config.eager_load = false
 
