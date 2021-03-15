@@ -9,4 +9,4 @@ Background:
     | 728977862@qq.com   | 4156GOGOGO         |2021-03-13 11:04:06|2021-03-13 11:04:06 |
     
     
-Scenario: Sign up for a new account with correct information
+#Scenario: Sign up for a new account with correct information

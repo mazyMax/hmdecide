@@ -25,6 +25,14 @@ Scenario: Non-existing email is used
     Then I should see "1 error prohibited this user from being saved:"
     Then I should see "Email not found"
     
+Scenario: No email is used
+    Given I am on the forget password page
+    Then I should see "Forgot your password?"
+    Then I should see "Email"
+    And I press "Send me reset password instructions"
+    Then I should see "1 error prohibited this user from being saved:"
+    Then I should see "Email can't be blank"
+    
 Scenario: Existing email is used
     Given I am on the forget password page
     Then I should see "Forgot your password?"
@@ -32,9 +40,6 @@ Scenario: Existing email is used
     And I fill in "Email" with "728977862@qq.com"
     And I press "Send me reset password instructions"
     And I shoule see "You will receive an email with instructions on how to reset your password in a few minutes."
-    # this should be filled after the logout function is finished
-    # something like Then I can see "instruction is sent."
-    # current bug will be fixed once the link of this button is added
+    And I should be on the log in page
     
-# check invalid email address
-Scenario: Invalid email is used
+# check invalid email address (may not necessary)

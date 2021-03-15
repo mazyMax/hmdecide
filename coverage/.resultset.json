@@ -23,20 +23,6 @@
           null
         ]
       },
-      "/home/codio/workspace/hmdecide/app/models/post.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
       "/home/codio/workspace/hmdecide/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -71,9 +57,23 @@
         "lines": [
           1,
           1,
-          24,
+          23,
           null,
           null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/models/post.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
           1,
           null,
           null
@@ -90,14 +90,14 @@
           null,
           null,
           1,
-          2,
-          2,
+          1,
+          1,
           null,
           null,
           1,
           null,
           1,
-          2,
+          1,
           null,
           null
         ]
@@ -252,7 +252,7 @@
         }
       }
     },
-    "timestamp": 1615751406
+    "timestamp": 1615774520
   },
   "RSpec": {
     "coverage": {
