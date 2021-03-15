@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
+    
+    @posts = Post.all
+    
     def create
       Post.create!(post_params)
       redirect_to new_choice_path
     end
-    
-    def index
-        @posts = Post.all
-    end
+
 
     def show
         id = params[:id]

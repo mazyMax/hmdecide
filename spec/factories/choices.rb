@@ -1,7 +1,10 @@
 FactoryBot.define do
   factory :choice do
     description { "MyString" }
-    topic_id { 1 }
-    count { 1 }
+    images {
+        Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 
+            'images', 'harry.jpg'), 'image/jpg')
+    }
+    topic_id { '1' }
   end
 end

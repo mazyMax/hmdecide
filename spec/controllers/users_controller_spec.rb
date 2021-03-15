@@ -6,7 +6,7 @@ describe UsersController do
     UsersController.new
     test1 = FactoryBot.create(:user,
         email: "728977862@qq.com", 
-        password: "4156GOGOGO", 
+        password: "4156GOGOGO",
         created_at: "2021-03-13 11:04:06",
         updated_at: "2021-03-13 11:04:06"
     )
@@ -17,23 +17,21 @@ describe UsersController do
         end
     end
     
-#    describe "update function" do
-#        it "should update the information about one ID" do
-#                put :update, id: @contact, 
-#                user: FactoryBot.attributes_for(
-#                    :contact, 
-#                    firstname: "Larry", 
-#                    lastname: "Smith"
-#                )
-#                @contact.reload
-#                @contact.firstname.should eq("Larry")
-#                @contact.lastname.should eq("Smith")
-#        end
-#        it "should redirect to the current user page" do
-#            put :update, id: @contact, contact: Factory.attributes_for(:contact)
-#            response.should redirect_to @contact
-#        end
-#    end
+    describe "PUT update" do
+        it "should update the information about one user" do
+            
+            allow(controller).to receive(:current_user).and_return(User.all.take)
+            hash_param = FactoryBot.attributes_for(:user, email:"1234567@qq.com")
+            id_param = User.all.take.id
+            put :update, params:{
+                id: id_param,
+                user: hash_param
+            }
+            expect (User.all.take.email == "1234567@qq.com")
+            
+        end
+
+    end
 
 end
    

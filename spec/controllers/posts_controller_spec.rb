@@ -14,16 +14,9 @@ describe PostsController do
         updated_at: "2021-03-13 11:04:06"
     )
     
-#     render_views
     
-#     describe "GET index" do
-#       it "has a posts related heading" do
-#         get :index
-#         expect(response.body).to match /<h1>.*posts/im
-#       end
-#     end
-    
-    describe "create" do
+   
+    describe "POST create" do
       it "successfully complete creation" do 
         hash_param = FactoryBot.attributes_for(:post)
         hash_param[:user_id] = User.all.take.id
@@ -33,22 +26,36 @@ describe PostsController do
       end
     end
     
+
+    
     describe "GET show" do
-      it "shows the posts that one user creates" do 
-        hash_param = FactoryBot.attributes_for(:post)
-        hash_param[:user_id] = User.all.take.id
-        post :create, params: {post: hash_param}
-        get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
-      end
+        it "show the posts that one user creates"do
+            hash_param = FactoryBot.attributes_for(:post)
+            hash_param[:user_id] = User.all.take.id
+            post :create, params: {post: hash_param}
+            get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
+            expect(response.status).to eq(200)
+        end
     end
     
-    describe "GET index" do
-      it "shows the posts that one user creates" do 
-        hash_param = FactoryBot.attributes_for(:post)
-        hash_param[:user_id] = User.all.take.id
-        post :create, params: {post: hash_param}
-        get :index
-      end
+    
+    describe "POST destroy" do
+        it "destroys posts using ID"do
+            
+
+            allow(controller).to receive(:current_user).and_return(User.all.take)
+            #puts User.all.take.id
+            hash_param = FactoryBot.attributes_for(:post)
+            hash_param[:user_id] = User.all.take.id
+            post :create, params: {post: hash_param}
+            
+            #puts Post.all.take.user_id
+            
+            expect { 
+              post :destroy, params: {id: Post.all.take.id}
+            }.to change(Post, :count).by(-1) 
+            #and redirect_to root_path
+        end
     end
 
 end
