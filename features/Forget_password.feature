@@ -33,13 +33,16 @@ Scenario: No email is used
     Then I should see "1 error prohibited this user from being saved:"
     Then I should see "Email can't be blank"
     
-Scenario: Existing email is used
-    Given I am on the forget password page
-    Then I should see "Forgot your password?"
-    Then I should see "Email"
-    And I fill in "Email" with "728977862@qq.com"
-    And I press "Send me reset password instructions"
-    And I shoule see "You will receive an email with instructions on how to reset your password in a few minutes."
-    And I should be on the log in page
+# reference: http://www.databasically.com/2011/02/02/mark-a-scenario-in-cucumber-as-pending
+#not implemented yet, this will be covered in iteration 2
+#Scenario: Existing email is used(not implemented yet)
+#    Given PENDING
+#    Given I am on the forget password page
+#    Then I should see "Forgot your password?"
+#    Then I should see "Email"
+#    And I fill in "Email" with "728977862@qq.com"
+#    And I press "Send me reset password instructions"
+#    And I shoule see "You will receive an email with instructions on how to reset your password in a few minutes."
+#    And I should be on the log in page
     
 # check invalid email address (may not necessary)

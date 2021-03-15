@@ -31,6 +31,24 @@ describe ChoicesController do
             }.to change(Choice, :count).by(1)
             
         end
+        
+        it "fail to create a choice when we do not upload images" do
+            Choice.new
+            post2 = FactoryBot.create(:post,
+            description: "AAAAA",
+            user_id: User.all.take.id,
+            image: Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 
+                'images', 'harry.jpg'), 'image/jpg')
+            )
+            #post :create, params: {post: Post.all.take}
+            choice_param = FactoryBot.attributes_for(:choice) 
+            choice_param[:topic_id] = Post.all.take.id
+            choice_param[:images] = nil
+            expect {
+                post :create, params: {choice: choice_param}
+            }.to raise_error
+        end
+        
     end
     #https://stackoverflow.com/questions/55141549/attaching-activestorage-files-in-factorybot
     describe "GET show" do
@@ -49,10 +67,6 @@ describe ChoicesController do
             expect(response.status).to eq(200)          
         end
     end
-    
-    
-    
-    
+
 
 end
-

@@ -5,6 +5,6 @@ class Choice < ApplicationRecord
     
     validate :image_presence
       def image_presence
-        errors.add(:images, "can't be blank") unless images.attached?
+          errors.add(:images, "can't be blank") unless images.attached?
       end
 end

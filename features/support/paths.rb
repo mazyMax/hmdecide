@@ -31,6 +31,8 @@ module NavigationHelpers
         
     when /^the edit profile\s?page$/ then '/users/1/edit'
         
+    when /^the choice_upload\s?page$/ then '/choices/new'
+        
     #when /^the signed in\s?page$/ then '/users/sign_in'
 
     # Add more mappings here.

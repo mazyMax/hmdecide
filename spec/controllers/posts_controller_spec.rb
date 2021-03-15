@@ -22,40 +22,49 @@ describe PostsController do
         hash_param[:user_id] = User.all.take.id
         expect { 
           post :create, params: {post: hash_param}
-        }.to change(Post, :count).by(1) and redirect_to root_path
+        }.to change(Post, :count).by(1)
       end
+        
+      it "fails to complete creation with wrong messages" do 
+          hash_param = FactoryBot.attributes_for(:post)
+          hash_param[:user_id] = User.all.take.id   
+          post :create, params: {post: {post:hash_param}}
+          flash.now[:messages].should == "User must exist"
+
+      end
+        
     end
     
 
     
-    describe "GET show" do
-        it "show the posts that one user creates"do
-            hash_param = FactoryBot.attributes_for(:post)
-            hash_param[:user_id] = User.all.take.id
-            post :create, params: {post: hash_param}
-            get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
-            expect(response.status).to eq(200)
-        end
-    end
+#    describe "GET show" do
+#        it "show the posts that one user creates"do
+#            hash_param = FactoryBot.attributes_for(:post)
+#            hash_param[:user_id] = User.all.take.id
+#            post :create, params: {post: hash_param}
+#            get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
+#            expect(response.status).to eq(200)
+#        end
+#    end
     
     
-    describe "POST destroy" do
-        it "destroys posts using ID"do
-            
-            #reference: https://stackoverflow.com/questions/24522294/rspec-how-to-stub-inherited-method-current-user-w-o-devise
-            allow(controller).to receive(:current_user).and_return(User.all.take)
-            #puts User.all.take.id
-            hash_param = FactoryBot.attributes_for(:post)
-            hash_param[:user_id] = User.all.take.id
-            post :create, params: {post: hash_param}
-            
-            #puts Post.all.take.user_id
-            
-            expect { 
-              post :destroy, params: {id: Post.all.take.id}
-            }.to change(Post, :count).by(-1) 
-            #and redirect_to root_path
-        end
-    end
+#    describe "POST destroy" do
+#        it "destroys posts using ID"do
+#            
+#            #reference: https://stackoverflow.com/questions/24522294/rspec-how-to-stub-inherited-method-current-user-w-o-devise
+#            allow(controller).to receive(:current_user).and_return(User.all.take)
+#            #puts User.all.take.id
+#            hash_param = FactoryBot.attributes_for(:post)
+#            hash_param[:user_id] = User.all.take.id
+#            post :create, params: {post: hash_param}
+#            
+#            #puts Post.all.take.user_id
+#            
+#            expect { 
+#              post :destroy, params: {id: Post.all.take.id}
+#            }.to change(Post, :count).by(-1) 
+#            #and redirect_to root_path
+#        end
+#    end
 
 end
