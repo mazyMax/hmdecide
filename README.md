@@ -7,7 +7,7 @@ Yaning Ling: yl4741 <br />
 
 ### 2. Instructions to Run the Program
 We use Codio as our development tools, first, create a new ruby on rails project, then in the terminal and run: <br />
-$ git clone -b master https://github.com/mazyMax/hmdecide.git <br />
+$ git clone -b hao-sw https://github.com/mazyMax/hmdecide.git <br />
 
 #### NOTE: invite @DelphianCalamity, @chini5ko, @wyjw for access the github
 
