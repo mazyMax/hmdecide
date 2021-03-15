@@ -36,5 +36,5 @@ Scenario: Change personal information
     And I fill in "Phone" with "3107760015"
     And I fill in "Gender" with "Male"
     Then I press "Submit!"
-    Then I should be on the profile page
+    Then I should be redirected to the profile page of "728977862@qq.com"
     # the email is not changed

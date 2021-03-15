@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home/about'
 
     resources :users, only: [:show, :edit, :update]
-    resources :posts, only: [:new, :create, :show, :destroy]
+    resources :posts, only: [:new, :create, :show, :destroy, :index]
     resources :choices do
         member do
             put 'like', to: 'choices#upvote'

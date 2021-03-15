@@ -13,7 +13,16 @@ describe PostsController do
         created_at: "2021-03-13 11:04:06",
         updated_at: "2021-03-13 11:04:06"
     )
-   
+    
+#     render_views
+    
+#     describe "GET index" do
+#       it "has a posts related heading" do
+#         get :index
+#         expect(response.body).to match /<h1>.*posts/im
+#       end
+#     end
+    
     describe "create" do
       it "successfully complete creation" do 
         hash_param = FactoryBot.attributes_for(:post)
@@ -24,4 +33,22 @@ describe PostsController do
       end
     end
     
+    describe "GET show" do
+      it "shows the posts that one user creates" do 
+        hash_param = FactoryBot.attributes_for(:post)
+        hash_param[:user_id] = User.all.take.id
+        post :create, params: {post: hash_param}
+        get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
+      end
+    end
+    
+    describe "GET index" do
+      it "shows the posts that one user creates" do 
+        hash_param = FactoryBot.attributes_for(:post)
+        hash_param[:user_id] = User.all.take.id
+        post :create, params: {post: hash_param}
+        get :index
+      end
+    end
+
 end
