@@ -42,7 +42,7 @@ describe PostsController do
     describe "POST destroy" do
         it "destroys posts using ID"do
             
-
+            #reference: https://stackoverflow.com/questions/24522294/rspec-how-to-stub-inherited-method-current-user-w-o-devise
             allow(controller).to receive(:current_user).and_return(User.all.take)
             #puts User.all.take.id
             hash_param = FactoryBot.attributes_for(:post)

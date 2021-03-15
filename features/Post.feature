@@ -34,7 +34,7 @@ Scenario: Post a new vote without image
 
 Scenario: Post a new vote without Description
     Given I am on the post_vote page
-    And I upload a image named "harry.jpg"
+    And I upload an image named "harry.jpg"
     And I press "Create Vote"
     Then I should be on the post_vote page
     And I should see "Please upload images."

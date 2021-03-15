@@ -19,7 +19,7 @@ describe UsersController do
     
     describe "PUT update" do
         it "should update the information about one user" do
-            
+            #reference: https://stackoverflow.com/questions/24522294/rspec-how-to-stub-inherited-method-current-user-w-o-devise
             allow(controller).to receive(:current_user).and_return(User.all.take)
             hash_param = FactoryBot.attributes_for(:user, email:"1234567@qq.com")
             id_param = User.all.take.id

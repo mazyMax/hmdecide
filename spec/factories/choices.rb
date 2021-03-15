@@ -1,3 +1,4 @@
+#https://stackoverflow.com/questions/55141549/attaching-activestorage-files-in-factorybot
 FactoryBot.define do
   factory :choice do
     description { "MyString" }

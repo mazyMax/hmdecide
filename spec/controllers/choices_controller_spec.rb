@@ -32,7 +32,7 @@ describe ChoicesController do
             
         end
     end
-    
+    #https://stackoverflow.com/questions/55141549/attaching-activestorage-files-in-factorybot
     describe "GET show" do
         it "show the choices that one user creates" do
             post1 = FactoryBot.create(:post,
