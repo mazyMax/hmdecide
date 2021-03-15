@@ -33,33 +33,8 @@ Scenario: Change personal information
     And I fill in "Username" with "CrazyPenguin"
     And I fill in "Website" with "https://pythex.org/"
     And I fill in "Bio" with "Hello World"
-    And I fill in "Email" with "yaningling0323@gmail.com"
     And I fill in "Phone" with "3107760015"
     And I fill in "Gender" with "Male"
     Then I press "Submit!"
-    Then I should be on the profile page
-    # other conditions needs to be added
-    And I should see "Profile is successfully edited."
-    
-Scenario: Change personal information with invalid email address
-    Given I am on the log in page
-	And I fill in "Email" with "728977862@qq.com"
-	And I fill in "Password" with "4156GOGOGO"
-	And I press "Log in"
-    Then I follow "Profile"
-    Then I follow "Edit Profile"
-    # change a profile photo
-    Then I fill in "Name" with "Yanhao"
-    And I fill in "Username" with "CrazyPenguin"
-    And I fill in "Website" with "https://pythex.org/"
-    And I fill in "Bio" with "Hello World"
-    And I fill in "Email" with "yaningling0323"
-    And I fill in "Phone" with "3107760015"
-    And I fill in "Gender" with "Male"
-    Then I press "Submit!"
-    #Then I should be on the profile page
-    # other conditions needs to be added
-    And I should see "The email address is invalid."
-    
-# for scenarios that redirect to other pages such as emails&SMS etc
-# we can add them when we implements each functionality. 
+    Then I should be redirected to the profile page of "728977862@qq.com"
+    # the email is not changed

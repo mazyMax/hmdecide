@@ -26,6 +26,7 @@ describe PostsController do
       end
     end
     
+
     
     describe "GET show" do
         it "show the posts that one user creates"do
@@ -56,4 +57,5 @@ describe PostsController do
             #and redirect_to root_path
         end
     end
+
 end

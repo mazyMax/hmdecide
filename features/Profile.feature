@@ -28,7 +28,7 @@ Scenario: Redirect to edit profile page
 	And I fill in "Password" with "4156GOGOGO"
 	And I press "Log in"
     Then I follow "Profile"
-    And I press "Edit Profile"
-    Then I should be on the edit profile page
+    And I follow "Edit Profile"
+    Then I should be redirected to the edit profile page of "728977862@qq.com"
     
 # other scenarios such as view posts/followers/folloings, etc. 
