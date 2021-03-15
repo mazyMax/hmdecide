@@ -14,8 +14,8 @@ Background:
 #https://stackoverflow.com/questions/3724487/rails-root-directory-path
 #https://stackoverflow.com/questions/9667373/how-to-test-multiple-file-upload-using-cucumber-capybara
 
-#delete the drop down menu will fix this first scenario
-#This scenario is incomplete, now, wo can only upload one image to our post, This problem will be fixed in the next iteration.
+
+#now, we can only upload one image to our post, This problem will be fixed in the next iteration.
 Scenario: Post a new vote successfully, Firstly upload a vote, and then upload several choices for the vote, then go to see its details
     Given I am on the home page
     And I follow "New Vote"
@@ -29,7 +29,7 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
     And I press "Create Choice"
     Then I should be on the home page
     #this redirection is assigned with constant value, which will be implemented fully in the next iteration
-    And I should be able to get "what food"
+    And I request "what food"
 
     
 # Images are essential to create a vote

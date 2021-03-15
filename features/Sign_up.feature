@@ -7,7 +7,7 @@ Background:
     | email              | password           |created_at         |updated_at          |
     | 728977862@qq.com   | 4156GOGOGO         |2021-03-13 11:04:06|2021-03-13 11:04:06 |
 
-#invalid password, invalid email, not equal pasword
+
 Scenario: Sign up for a new account with correct information
     Given I am on the home page
     And I follow "Sign Up"

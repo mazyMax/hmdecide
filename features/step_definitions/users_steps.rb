@@ -25,7 +25,12 @@ Then /I upload an image named "([^"]*)"/ do |file_name|
 end
 
 
-Then /I should be able to get "([^"]*)"/ do |post_name|
+Then /I request "([^"]*)"/ do |post_name|
     #this redirection is assigned with constant value, which will be implemented fully in the next iteration
     get choice_path(1)
+end
+
+Then /I upvote for "([^"]*)"/ do |post_name|
+    #this is also assigned with constant value, which will be implemented fully in the next iteration
+    put like_choice_path(1)
 end

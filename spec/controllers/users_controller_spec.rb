@@ -10,11 +10,18 @@ describe UsersController do
         created_at: "2021-03-13 11:04:06",
         updated_at: "2021-03-13 11:04:06"
     )
-    #unfinished!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    describe "edit function" do
-        it "should get information about one ID" do
+    # https://stackoverflow.com/questions/39189748/how-to-expect-render-template-error
+    describe "Get edit" do
+        it "successfully request the page" do
             get :edit, params: {id: User.where("email = ?", "728977862@qq.com").take.id}
+            expect(response.status).to eq(200) 
         end
+        
+        it "renders the edit template" do
+            get :edit, params: {id: User.where("email = ?", "728977862@qq.com").take.id}
+            response.should render_template :edit 
+        end
+        
     end
     
     describe "PUT update" do
@@ -27,9 +34,10 @@ describe UsersController do
                 id: id_param,
                 user: hash_param
             }
-            expect (User.all.take.email == "1234567@qq.com")
-            
+            expect (User.all.take.email == "1234567@qq.com")   
         end
+        
+        
 
     end
 

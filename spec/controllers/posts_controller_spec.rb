@@ -17,6 +17,7 @@ describe PostsController do
     
    
     describe "POST create" do
+        
       it "successfully complete creation" do 
         hash_param = FactoryBot.attributes_for(:post)
         hash_param[:user_id] = User.all.take.id
@@ -25,12 +26,18 @@ describe PostsController do
         }.to change(Post, :count).by(1)
       end
         
+      it "redirects to the new_choice_path" do 
+        hash_param = FactoryBot.attributes_for(:post)
+        hash_param[:user_id] = User.all.take.id
+        post :create, params: {post: hash_param}
+        expect(response).to redirect_to(new_choice_path)
+      end  
+        
       it "fails to complete creation with wrong messages" do 
           hash_param = FactoryBot.attributes_for(:post)
           hash_param[:user_id] = User.all.take.id   
           post :create, params: {post: {post:hash_param}}
           flash.now[:messages].should == "User must exist"
-
       end
         
     end

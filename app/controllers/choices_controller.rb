@@ -30,11 +30,11 @@ class ChoicesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
     
-    def downvote
-        @choice = Choice.find params[:id]
-        @choice.downvote_from current_user
-        redirect_to root_path
-    end
+#    def downvote
+#        @choice = Choice.find params[:id]
+#        @choice.downvote_from current_user
+#        redirect_to root_path
+#    end
     
     private
     def choice_params

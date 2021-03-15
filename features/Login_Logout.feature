@@ -9,7 +9,6 @@ Background:
     | email              | password           |created_at         |updated_at          |
     | 728977862@qq.com   | 4156GOGOGO         |2021-03-13 11:04:06|2021-03-13 11:04:06 |
 
-# delete the drop down menu will fix this scenario
 Scenario: Log in with an existing account
 	Given I am on the home page
     Then I should not see "Log Out"
@@ -60,7 +59,6 @@ Scenario: Log out
 	And I press "Log in"
     Then I should be on the home page
     Then I should see "Signed in successfully."
-    
     Then I should not see "Sign Up"
     Then I should not see "Log In"
     Then I press "Log Out"
@@ -71,4 +69,3 @@ Scenario: Log out
     And I should not see "Log Out"
     And I should not see "Update Account"
     And I should not see "Profile"
-# delete the drop down menu will fix this scenario

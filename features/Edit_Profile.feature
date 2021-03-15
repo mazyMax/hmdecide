@@ -6,7 +6,7 @@ Background:
 
 # both scenarios can be fixed by deleting the drop down menu
 
-Scenario: Change personal information
+Scenario: Change personal information of Name, Username, Website, Bio, Phone, Gender
     Given I am on the log in page
 	And I fill in "Email" with "728977862@qq.com"
 	And I fill in "Password" with "4156GOGOGO"
@@ -18,7 +18,6 @@ Scenario: Change personal information
     And I should see "Email and SMS"
     And I should see "Manage Contacts"
     And I should see "Privacy and Security"
-    
     And I should see "Change Profile Photo"
     And I should see "Name"
     And I should see "Email"
