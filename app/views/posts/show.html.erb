@@ -67,6 +67,6 @@
 
 <div class="delete">
   <% if current_user.posts.exists?(@post.id) %>
-    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= button_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'%>
   <% end %>
 </div>

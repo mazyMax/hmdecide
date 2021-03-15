@@ -1,8 +1,16 @@
 class PostsController < ApplicationController
     def create
-      Post.create!(post_params)
-      redirect_to new_choice_path
+      #@post = Post.create!(post_params)
+      #redirect_to root_path   
+     @post = Post.new(post_params)
+    if @post.valid?
+      @post.save
+      redirect_to root_path
+    else
+      flash.now[:messages] = @post.errors.full_messages[0]
+      render :new
     end
+  end
     
     def index
         @posts = Post.all
