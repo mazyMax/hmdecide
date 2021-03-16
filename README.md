@@ -37,6 +37,10 @@ To see cucumber test results, run: <br />
 To see spec test coverage results, run: <br />
 `$ rake spec` <br />
 Both of the tests reached 100% coverage.
+![image](https://user-images.githubusercontent.com/40637476/111245359-76418880-863f-11eb-8baf-185cd460ee67.png)
+![image](https://user-images.githubusercontent.com/40637476/111245547-c4568c00-863f-11eb-9c35-5f6a37554a5f.png)
+![image](https://user-images.githubusercontent.com/40637476/111245382-7f325a00-863f-11eb-83a2-7a1f8a4af0f6.png)
+![image](https://user-images.githubusercontent.com/40637476/111245408-8f4a3980-863f-11eb-80de-e13c415baff4.png)
 
 ### 3. Heroku Link:
 https://secure-wildwood-93728.herokuapp.com/
@@ -51,10 +55,10 @@ a. Fully Implemented: <br />
 b. Half Implemented: <br />
     When we click the image of posts on home page or from profile, we will always jump to /choices/1 <br />
     When we create a new vote and jump to create a new choice, you can only upload one image per post. <br />
-    Though when we click a post, it will show all the choices we created. <br />
-    When we click Vote! button in choices/1 page, it will increment 1 to the counter. We have implemented a function to upvote but we have not figured out a way to use it properly, so we will fix it in future iterations. <br />
+    Though when we click one post per time, it will show all of the choices(in total) we created. <br />
+    When we click Vote! button in choices/1 page, it will increment 1 to the counter. We have implemented a function to upvote but we have not implement them completely, so we will fix it in future iterations. <br />
     The search field on the navbar has no function yet. Buttons in profile page like 'IGTV', 'SAVED', 'TAGGED' will do nothing. And in the edit profile page only Submit! button works. <br />
-    We encounter some css and jquery bugs like the method: :put, method: :delete don't work on rails 6 and after searching for google it seems like a long-existing problem in rails 5.2+ version. So we have to change the "link_to" to "button_to" on certain components like "Logout" on the navbar so it may seem not very cool for now, we will try to solve this problem in future iters. <br />
-
+    We encountered some css and jquery bugs(e.g. the method: :put, method: :delete don't work on rails 6). After searching for google, it seems that it is a long-existing problem in rails 5.2+ version. So we have to change the "link_to" to "button_to" on certain components like "Logout" on the navbar so it may seem not very cool for now, we will try to solve this problem in future iters. <br />
+ 
 c. Implement in Future Iterations: <br />
     Upload multiple choices, search posts by tag, testing for upvote and downvote, send the email for reset password, get stats of votes,  improve about me, better UI layout and design.
