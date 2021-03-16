@@ -13,13 +13,15 @@ $ git clone -b hao-sw https://github.com/mazyMax/hmdecide.git <br />
 
 Then enter our project by running: <br />
 
-`$ cd hmdecide/ <br />`
+`$ cd hmdecide/ `
 And then run: <br />
 ```
-$ bundle install
+$ bundle install --without production
 $ yarn install --check-files
-$ rails db:migrate
-$ rake db:seed
+$ bundle exec rake db:migrate
+$ bundle exec rake db:test:prepare
+$ rake cucumber
+$ rake spec
 ```
 Now the installation is done, then run: <br />
 `$ rails server -b 0.0.0.0` <br />
