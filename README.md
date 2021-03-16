@@ -40,7 +40,7 @@ Both of the tests reached 100% coverage.
 ![image](https://user-images.githubusercontent.com/40637476/111245359-76418880-863f-11eb-8baf-185cd460ee67.png)
 ![image](https://user-images.githubusercontent.com/40637476/111245547-c4568c00-863f-11eb-9c35-5f6a37554a5f.png)
 ![image](https://user-images.githubusercontent.com/40637476/111245382-7f325a00-863f-11eb-83a2-7a1f8a4af0f6.png)
-![image](https://user-images.githubusercontent.com/40637476/111245408-8f4a3980-863f-11eb-80de-e13c415baff4.png)
+![image](https://user-images.githubusercontent.com/40637476/111245696-01228300-8640-11eb-88bb-634acb74acbf.png)
 
 ### 3. Heroku Link:
 https://secure-wildwood-93728.herokuapp.com/
