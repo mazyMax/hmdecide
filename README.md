@@ -36,12 +36,12 @@ To see cucumber test results, run: <br />
 `$ rake cucumber` <br />
 To see spec test coverage results, run: <br />
 `$ rake spec` <br />
-Both of the tests reached 100% coverage.
+
 ### 3. Heroku Link:
-https://boiling-springs-10927.herokuapp.com
+https://secure-wildwood-93728.herokuapp.com/
 
 ### 4. Link to Github Repo:
-https://github.com/mazyMax/hmdecide.git
+https://github.com/mazyMax/hmdecide/tree/hao-sw
 
 ### 5. Features we've  implemented and not
 a. Fully Implemented: <br />
