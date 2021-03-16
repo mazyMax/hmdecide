@@ -36,6 +36,7 @@ To see cucumber test results, run: <br />
 `$ rake cucumber` <br />
 To see spec test coverage results, run: <br />
 `$ rake spec` <br />
+Both of the tests reached 100% coverage.
 
 ### 3. Heroku Link:
 https://secure-wildwood-93728.herokuapp.com/
