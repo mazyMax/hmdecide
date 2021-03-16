@@ -16,10 +16,10 @@ Then enter our project by running: <br />
 `$ cd hmdecide/ <br />`
 And then run: <br />
 ```
-$ bundle install <br />
-$ yarn install --check-files <br />
-$ rails db:migrate <br />
-$ rake db:seed <br />
+$ bundle install
+$ yarn install --check-files
+$ rails db:migrate
+$ rake db:seed
 ```
 Now the installation is done, then run: <br />
 `$ rails server -b 0.0.0.0` <br />
