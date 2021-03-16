@@ -49,7 +49,7 @@ b. Half Implemented: <br />
     When we click the image of posts on home page or from profile, we will always jump to /choices/1 <br />
     When we create a new vote and jump to create a new choice, you can only upload one image per post. <br />
     Though when we click a post, it will show all the choices we created. <br />
-    When we click Vote! button in choices/1 page, it will increment 1 to the counter. We have implemented a function to upvote but we have not figured out a way to test it properly, so we temporarily delete the function and will figure a proper way to test it in future iterations. <br />
+    When we click Vote! button in choices/1 page, it will increment 1 to the counter. We have implemented a function to upvote but we have not figured out a way to use it properly, so we will fix it in future iterations. <br />
     The search field on the navbar has no function yet. Buttons in profile page like 'IGTV', 'SAVED', 'TAGGED' will do nothing. And in the edit profile page only Submit! button works. <br />
     We encounter some css and jquery bugs like the method: :put, method: :delete don't work on rails 6 and after searching for google it seems like a long-existing problem in rails 5.2+ version. So we have to change the "link_to" to "button_to" on certain components like "Logout" on the navbar so it may seem not very cool for now, we will try to solve this problem in future iters. <br />
 
