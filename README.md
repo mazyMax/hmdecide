@@ -13,13 +13,15 @@ $ git clone -b hao-sw https://github.com/mazyMax/hmdecide.git <br />
 
 Then enter our project by running: <br />
 
-`$ cd hmdecide/ <br />`
+`$ cd hmdecide/ `
 And then run: <br />
 ```
-$ bundle install <br />
-$ yarn install --check-files <br />
-$ rails db:migrate <br />
-$ rake db:seed <br />
+$ bundle install --without production
+$ yarn install --check-files
+$ bundle exec rake db:migrate
+$ bundle exec rake db:test:prepare
+$ rake cucumber
+$ rake spec
 ```
 Now the installation is done, then run: <br />
 `$ rails server -b 0.0.0.0` <br />
@@ -36,10 +38,10 @@ To see spec test coverage results, run: <br />
 `$ rake spec` <br />
 
 ### 3. Heroku Link:
-https://boiling-springs-10927.herokuapp.com
+https://secure-wildwood-93728.herokuapp.com/
 
 ### 4. Link to Github Repo:
-https://github.com/mazyMax/hmdecide.git
+https://github.com/mazyMax/hmdecide/tree/hao-sw
 
 ### 5. Features we've  implemented and not
 a. Fully Implemented: <br />
@@ -49,7 +51,7 @@ b. Half Implemented: <br />
     When we click the image of posts on home page or from profile, we will always jump to /choices/1 <br />
     When we create a new vote and jump to create a new choice, you can only upload one image per post. <br />
     Though when we click a post, it will show all the choices we created. <br />
-    When we click Vote! button in choices/1 page, it will throw an error. We have implemented a function to upvote but we have not figured out a way to test it properly, so we temporarily delete the function and will figure a proper way to test it in future iterations. <br />
+    When we click Vote! button in choices/1 page, it will increment 1 to the counter. We have implemented a function to upvote but we have not figured out a way to use it properly, so we will fix it in future iterations. <br />
     The search field on the navbar has no function yet. Buttons in profile page like 'IGTV', 'SAVED', 'TAGGED' will do nothing. And in the edit profile page only Submit! button works. <br />
     We encounter some css and jquery bugs like the method: :put, method: :delete don't work on rails 6 and after searching for google it seems like a long-existing problem in rails 5.2+ version. So we have to change the "link_to" to "button_to" on certain components like "Logout" on the navbar so it may seem not very cool for now, we will try to solve this problem in future iters. <br />
 
