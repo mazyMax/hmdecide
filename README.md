@@ -1,4 +1,4 @@
-# Iteration 1 Readme Note: 
+# Iteration 1 Readme
 # Note: Final submitted code for iteration one is in the hao-sw branch!
 
 ### 1. Team Member Names
