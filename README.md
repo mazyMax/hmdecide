@@ -1,5 +1,5 @@
 # Iteration 1 Readme Note: 
-# Note: Final submitted code is in the hao-sw branch!
+# Note: Final submitted code for iteration one is in the hao-sw branch!
 
 ### 1. Team Member Names
 Sixuan Wang: sw3513 <br />
