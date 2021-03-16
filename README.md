@@ -41,7 +41,7 @@ To see spec test coverage results, run: <br />
 https://secure-wildwood-93728.herokuapp.com/
 
 ### 4. Link to Github Repo:
-https://github.com/mazyMax/hmdecide/hao-sw
+https://github.com/mazyMax/hmdecide/tree/hao-sw
 
 ### 5. Features we've  implemented and not
 a. Fully Implemented: <br />
