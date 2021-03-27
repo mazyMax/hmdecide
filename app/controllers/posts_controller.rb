@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     
+
     @posts = Post.all
+
     
     def create
       #Post.create!(post_params)
@@ -13,8 +15,13 @@ class PostsController < ApplicationController
     if @post.valid?
       @post.save
         puts @post.id
-      choice_params = {images: post_params[:images], user_id: post_params[:user_id], post_id: @post.id}
-      Choice.create(choice_params)
+        
+      post_params[:images].each do |img|
+          choice_params = {images: img, user_id: post_params[:user_id], post_id: @post.id}
+          Choice.create(choice_params)
+      end
+      
+           
         
       redirect_to root_path
     else
@@ -27,6 +34,7 @@ class PostsController < ApplicationController
         @post = Post.new
         @post.choices.build
     end
+    
     
    
 

@@ -8,6 +8,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("packs/muti_upload_choices")
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs

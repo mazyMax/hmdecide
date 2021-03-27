@@ -18,4 +18,15 @@ class Post < ApplicationRecord
         return Post.where("user_id = ?", user_id)
     end
     
+    #https://melvinchng.github.io/rails/SearchFeature.html#43-adding-a-simple-search-feature
+    def self.search(content)
+        if content == nil
+            return Post.all
+        end
+        
+        Post.where("")
+        
+        
+    end
+    
 end

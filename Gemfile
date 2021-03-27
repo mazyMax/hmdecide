@@ -32,6 +32,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'acts_as_votable', '~> 0.13.1'
+gem 'cocoon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

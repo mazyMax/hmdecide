@@ -14,11 +14,16 @@
 
   <p>Choice Create</p>
 
+
+
   <div class="form-group">
+
      <%= f.label :images %>
-    <%= f.file_field :images %>
+      <h3><%= f.file_field :images %></h3>
   </div>
-  
+<h></h>
+
+  <button type='button' onclick="addMore()">Add More</button>
 
   <div class="text-center">
     <%= f.submit 'Create Vote', class: 'btn btn-primary' %>
