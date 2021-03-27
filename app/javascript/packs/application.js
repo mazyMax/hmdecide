@@ -9,6 +9,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/muti_upload_choices")
+require("packs/search_in_homepage")
+require("@nathanvda/cocoon")
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs

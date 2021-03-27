@@ -16,11 +16,23 @@ class PostsController < ApplicationController
       @post.save
         puts @post.id
         
-      post_params[:images].each do |img|
-          choice_params = {images: img, user_id: post_params[:user_id], post_id: @post.id}
-          Choice.create(choice_params)
-      end
-      
+#         puts post_params[:images]
+
+       images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
+       
+       puts images_list_params
+        
+        
+        
+       images_list_params[:images].each do |img|
+           choice_params = {images: img, user_id: post_params[:user_id], post_id: @post.id}
+           #puts choice_params
+           Choice.create(choice_params)
+       end
+        
+#         choice_params = {images: post_params[:images], user_id: post_params[:user_id], post_id: @post.id}
+#         puts choice_params
+#         Choice.create(choice_params)
            
         
       redirect_to root_path
@@ -52,6 +64,13 @@ class PostsController < ApplicationController
     
     private
     def post_params
-      params.require(:post).permit(:description, :image, :user_id, :images)
+#       params.require(:post).permit(:description, :image, :user_id, :images)
+#         params.require(:post).permit(:description, :image, :user_id, :images=choices_attributes: Choice.attribute_names.map(&:to_sym).push(:_destroy))
+#        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
+        
+       # params.require(:post).permit(:description, :image, :user_id, {images: []} )
+        
+        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
+        
     end
 end

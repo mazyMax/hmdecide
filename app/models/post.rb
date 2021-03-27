@@ -24,7 +24,7 @@ class Post < ApplicationRecord
             return Post.all
         end
         
-        Post.where("")
+        Post.where("post_id = ?", content)
         
         
     end

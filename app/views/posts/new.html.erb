@@ -14,16 +14,14 @@
 
   <p>Choice Create</p>
 
+  <%= fields_for :choices do |builder| %>
+        <%= render 'choice_fields', f:builder %>
+  <% end %>
 
-
-  <div class="form-group">
-
-     <%= f.label :images %>
-      <h3><%= f.file_field :images %></h3>
+  <div class ="links">
+  <%= link_to_add_association "Add Choices", f, :choices%>
   </div>
-<h></h>
 
-  <button type='button' onclick="addMore()">Add More</button>
 
   <div class="text-center">
     <%= f.submit 'Create Vote', class: 'btn btn-primary' %>
