@@ -5,10 +5,18 @@ class PostsController < ApplicationController
     def create
       #Post.create!(post_params)
       #redirect_to new_choice_path
-        @post = Post.new(post_params)
+        
+        post_true_params = {description: post_params[:description], image: post_params[:image], user_id: post_params[:user_id]}
+        @post = Post.new(post_true_params)
+        
+        #@post = Post.new(post_params)
     if @post.valid?
       @post.save
-      redirect_to new_choice_path
+        puts @post.id
+      choice_params = {images: post_params[:images], user_id: post_params[:user_id], post_id: @post.id}
+      Choice.create(choice_params)
+        
+      redirect_to root_path
     else
       flash.now[:messages] = @post.errors.full_messages[0]
       render :new
@@ -23,10 +31,10 @@ class PostsController < ApplicationController
    
 
 
-#    def show
-#        id = params[:id]
-#        @post = Post.find(id)
-#    end
+   def show
+       id = params[:id]
+       @post = Post.find(id)
+   end
     
 #    def destroy
 #      @post = current_user.posts.find(params[:id])
@@ -36,6 +44,6 @@ class PostsController < ApplicationController
     
     private
     def post_params
-      params.require(:post).permit(:description, :image, :user_id, choices_attributes: Choice.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:post).permit(:description, :image, :user_id, :images)
     end
 end

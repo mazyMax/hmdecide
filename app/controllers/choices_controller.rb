@@ -17,7 +17,7 @@ class ChoicesController < ApplicationController
     
     def create
       Choice.create(choice_params)
-      redirect_to root_path
+      #redirect_to root_path
 
         
     end

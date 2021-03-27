@@ -8,4 +8,7 @@ class Choice < ApplicationRecord
       def image_presence
           errors.add(:images, "can't be blank") unless images.attached?
       end
+    
+    
+    
 end

@@ -1,8 +1,5 @@
 <fieldset>
-    <div class="form-group">
-    <%= f.text_field :_destroy, as: :hidden %>
-    <%= link_to 'Delete', '#', class: 'remove_record' %>
-        </div>
+
     <div class="form-group">
       <%= f.label :description %>
     <%= f.text_field :description %>
@@ -11,10 +8,7 @@
       <%= f.label :images %>
     <%= f.file_field :images %>
   </div>
-    <div class="form-group">
-        <%= f.label :pid %>
-    <%= f.text_field :post_id %>
-  </div>
+
     <div class="form-group">
     <%= f.text_field :user_id, value: current_user.id, style: 'display:none'%>
   </div>

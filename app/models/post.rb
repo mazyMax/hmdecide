@@ -9,4 +9,13 @@ class Post < ApplicationRecord
     def image_presence
         errors.add(:image, "can't be blank") unless image.attached?
     end
+    
+    def self.Corresponding_Choices(post_id)
+        return Choice.where("post_id = ?", post_id)
+    end
+    
+    def self.Corresponding_Posts(user_id)
+        return Post.where("user_id = ?", user_id)
+    end
+    
 end

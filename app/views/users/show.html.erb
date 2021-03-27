@@ -44,11 +44,11 @@
 </div>
 
 <div class="user-images">
-   <% Post.all.each do |post| %>
+   <% Post.Corresponding_Posts(current_user).each do |post| %>
     <div class="wrapper">
        
       <% if post.image.attached? %>
-        <%= link_to(image_tag(url_for(post.image)), choice_path(1)) %>
+        <%= link_to(image_tag(url_for(post.image)), post_path(post.id)) %>
           
         <% end %>
     </div>
