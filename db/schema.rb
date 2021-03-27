@@ -35,10 +35,12 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
 
   create_table "choices", force: :cascade do |t|
     t.string "description"
-    t.integer "topic_id"
+    t.integer "post_id"
     t.integer "count"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_choices_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -83,4 +85,5 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "choices", "users"
 end

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
     belongs_to :user
+    has_many :choices
     has_one_attached :image
     
     validate :image_presence
