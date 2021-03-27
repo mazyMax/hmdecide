@@ -11,6 +11,12 @@
     <%= f.text_field :user_id, value: current_user.id, style: 'display:none'%>
   </div>
     <br>
+
+   <p>Choice Create</p>
+    <%= fields_for :choices do |builder| %>
+        <%= render 'choice_fields', f:builder %>
+    <% end %>
+
   <div class="text-center">
     <%= f.submit 'Create Vote', class: 'btn btn-primary' %>
   </div>

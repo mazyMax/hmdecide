@@ -2,6 +2,7 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :choices
     has_one_attached :image
+    accepts_nested_attributes_for :choices, allow_destroy: true
     
     validate :image_presence
     

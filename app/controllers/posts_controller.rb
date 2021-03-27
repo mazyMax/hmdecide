@@ -14,6 +14,12 @@ class PostsController < ApplicationController
       render :new
     end
   end
+    
+    def new
+        @post = Post.new
+        @post.choices.build
+    end
+    
    
 
 
@@ -30,6 +36,6 @@ class PostsController < ApplicationController
     
     private
     def post_params
-      params.require(:post).permit(:description, :image, :user_id)
+      params.require(:post).permit(:description, :image, :user_id, choices_attributes: Choice.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end
