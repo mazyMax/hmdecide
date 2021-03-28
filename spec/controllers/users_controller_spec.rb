@@ -2,6 +2,8 @@ require 'rails_helper'
 #reference https://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
 
 describe UsersController do
+    Post.destroy_all
+    Choice.destroy_all
     User.destroy_all
     UsersController.new
     test1 = FactoryBot.create(:user,
@@ -34,7 +36,8 @@ describe UsersController do
                 id: id_param,
                 user: hash_param
             }
-            expect (User.all.take.email == "1234567@qq.com")   
+            expect (User.all.take.email == "1234567@qq.com")
+
         end
         
         

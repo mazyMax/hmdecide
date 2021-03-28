@@ -1,6 +1,7 @@
 require 'rails_helper'
 describe "Post" do
     Post.destroy_all
+    Choice.destroy_all
     User.destroy_all
     PostsController.new
     

@@ -78,6 +78,7 @@ describe ChoicesController do
             expect { 
               post :create, params: {choice: hash_param}
             }.to change(Choice, :count).by(1)
+            
         end
     end
     

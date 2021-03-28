@@ -1,5 +1,8 @@
 Given /the following users exist/ do |users_table|
+  Post.destroy_all
+  Choice.destroy_all
   User.destroy_all
+    
   users_table.hashes.each do |user|   
     User.create!(user)
   end
@@ -7,13 +10,19 @@ end
 
 Given /the following posts exist/ do |posts_table|
   Post.destroy_all
+  Choice.destroy_all
+  User.destroy_all
+    
   posts_table.hashes.each do |post|   
     Post.create!(post)
   end
 end
 
 Given /the following choices exist/ do |choices_table|
+  Post.destroy_all
   Choice.destroy_all
+  User.destroy_all
+    
   choices_table.hashes.each do |choice|   
     Choice.create!(choice)
   end

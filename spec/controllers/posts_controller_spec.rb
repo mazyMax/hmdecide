@@ -5,6 +5,7 @@ describe PostsController do
     
     PostsController.new
     Post.destroy_all
+    Choice.destroy_all
     User.destroy_all
     
     test1 = FactoryBot.create(:user,
@@ -53,6 +54,7 @@ describe PostsController do
            post :create, params: {post: hash_param}
            get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
            expect(response.status).to eq(200)
+
        end
    end
     

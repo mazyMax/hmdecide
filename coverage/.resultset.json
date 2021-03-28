@@ -1,4 +1,256 @@
 {
+  "Cucumber Features": {
+    "coverage": {
+      "/home/codio/workspace/hmdecide/app/models/user.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/models/post.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/models/choice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/helpers/home_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/helpers/posts_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/helpers/users_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/controllers/home_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          25,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/controllers/posts_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/hmdecide/app/controllers/choices_controller.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1616942509
+  },
   "RSpec": {
     "coverage": {
       "/home/codio/workspace/hmdecide/app/models/user.rb": {
@@ -95,9 +347,7 @@
         "lines": [
           1,
           null,
-          null,
           1,
-          null,
           null,
           1,
           null,
@@ -215,7 +465,9 @@
         "lines": [
           1,
           1,
+          null,
           2,
+          null,
           null,
           null,
           1,
@@ -247,299 +499,6 @@
         ]
       }
     },
-    "timestamp": 1616939032
-  },
-  "Cucumber Features": {
-    "coverage": {
-      "/home/codio/workspace/hmdecide/app/models/user.rb": {
-        "lines": [
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/helpers/home_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/helpers/posts_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/helpers/users_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/controllers/home_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          25,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/models/post.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          4,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/controllers/users_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/controllers/posts_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          5,
-          5,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          3,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/models/choice.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/codio/workspace/hmdecide/app/controllers/choices_controller.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      }
-    },
-    "timestamp": 1616931835
+    "timestamp": 1616941545
   }
 }
