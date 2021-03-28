@@ -20,14 +20,17 @@ class Post < ApplicationRecord
     end
     
     #https://melvinchng.github.io/rails/SearchFeature.html#43-adding-a-simple-search-feature
-    def self.search(content)
-        if content == nil
-            return Post.all
-        end
+#     def self.search(search)
         
-        Post.where("post_id = ?", content)
+#         if search
+#             find(:all, :conditions => ['description LIKE ?',"%#{search}%"])
+#         else
+#             find(:all)
+#         end
         
-        
-    end
+#     end
+    
+    
+    
     
 end
