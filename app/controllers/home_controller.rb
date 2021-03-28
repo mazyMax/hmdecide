@@ -1,10 +1,8 @@
 class HomeController < ApplicationController
   def index
-       #@posts = Post.order(created_at: :desc)
-      @posts = Post.where(["description LIKE ?","%#{params[:search]}%"])
-#       if params[:search]
-#           @posts = Post.search(params[:search])
-#       end
+
+       @posts = Post.where(["description LIKE ?","%#{params[:search]}%"])
+
   end
     
   def about

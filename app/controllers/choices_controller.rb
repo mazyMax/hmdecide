@@ -12,29 +12,18 @@ class ChoicesController < ApplicationController
         @choice = Choice.find(id)
     end
     
-    def new
+    def create
+        @post = Choice.create(choice_params)
     end
     
-    def create
-      Choice.create(choice_params)
-      #redirect_to root_path
-
-        
-    end
-
     
 
     def upvote
         @choice = Choice.find params[:id]
         @choice.upvote_from current_user
-        redirect_back(fallback_location: root_path)
+        redirect_to(root_path)
     end
     
-#    def downvote
-#        @choice = Choice.find params[:id]
-#        @choice.downvote_from current_user
-#        redirect_to root_path
-#    end
     
     private
     def choice_params
