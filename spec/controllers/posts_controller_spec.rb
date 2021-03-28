@@ -17,21 +17,19 @@ describe PostsController do
     
    
     describe "POST create" do
-        
+      # https://www.rubydoc.info/docs/rails/4.1.7/ActionController/Parameters
       it "successfully complete creation" do 
         hash_param = FactoryBot.attributes_for(:post)
-        hash_param[:user_id] = User.all.take.id
+        hash_param[:user_id] = User.all.take.id     
+        images_param = {"images"=>Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
+        images_list_param = {"12345"=>images_param}       
+        hash_param["choices_attributes"] = images_list_param
+        
+
         expect { 
           post :create, params: {post: hash_param}
         }.to change(Post, :count).by(1)
       end
-        
-      it "redirects to the new_choice_path" do 
-        hash_param = FactoryBot.attributes_for(:post)
-        hash_param[:user_id] = User.all.take.id
-        post :create, params: {post: hash_param}
-        expect(response).to redirect_to(new_choice_path)
-      end  
         
       it "fails to complete creation with wrong messages" do 
           hash_param = FactoryBot.attributes_for(:post)
@@ -44,15 +42,19 @@ describe PostsController do
     
 
     
-#    describe "GET show" do
-#        it "show the posts that one user creates"do
-#            hash_param = FactoryBot.attributes_for(:post)
-#            hash_param[:user_id] = User.all.take.id
-#            post :create, params: {post: hash_param}
-#            get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
-#            expect(response.status).to eq(200)
-#        end
-#    end
+   describe "GET show" do
+       it "show the posts that one user creates"do
+           hash_param = FactoryBot.attributes_for(:post)
+           hash_param[:user_id] = User.all.take.id     
+           images_param = {"images"=>Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
+           images_list_param = {"12345"=>images_param}       
+           hash_param["choices_attributes"] = images_list_param
+           
+           post :create, params: {post: hash_param}
+           get :show, params: {id: Post.where("description = ?", "AAAAA").take.id}
+           expect(response.status).to eq(200)
+       end
+   end
     
     
 #    describe "POST destroy" do

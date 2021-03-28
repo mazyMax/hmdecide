@@ -15,8 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-          <button type="submit" class="btn btn-default" onclick="Post.search(1)">Submit</button>
+         <%= form_tag(root_path, method: :get , class: "form-control") do %>  
+            <%= text_field_tag :search, params[:search]%>
+              <%= submit_tag("Submit", :class => "btn btn-default" ) %>
+          <% end %> 
         </div>
 
       </form>

@@ -5,33 +5,22 @@ class PostsController < ApplicationController
 
     
     def create
-      #Post.create!(post_params)
-      #redirect_to new_choice_path
-        
-        post_true_params = {description: post_params[:description], image: post_params[:image], user_id: post_params[:user_id]}
-        puts post_true_params
-        @post = Post.new(post_true_params)
 
-        #@post = Post.new(post_params)
+    post_true_params = {description: post_params[:description], image: post_params[:image], user_id: post_params[:user_id]}
+
+    @post = Post.new(post_true_params)
+
     if @post.valid?
       @post.save
         puts @post.id
-        
-#         puts post_params[:images]
-        
-       #choice_params = {choices: post_params[:choices]}
-       #Choice.create(choice_params.take)
+
+
 
        images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
-       
-       #puts images_list_params
-        
-        
-       
+
+
        images_list_params[:images].each do |img|
-           puts "img!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-           puts img[1]
-           puts img.class
+
            choice_params = {images: img[1]['images'], 
                user_id: post_params[:user_id], 
                post_id: @post.id}
@@ -40,22 +29,17 @@ class PostsController < ApplicationController
            Choice.create(choice_params)
        end
         
-#         choice_params = {images: post_params[:images], user_id: post_params[:user_id], post_id: @post.id}
-#         puts choice_params
-#         Choice.create(choice_params)
-           
-        
-      redirect_to root_path
+       redirect_to root_path
     else
       flash.now[:messages] = @post.errors.full_messages[0]
       render :new
     end
   end
     
-    def new
-        @post = Post.new
-        @post.choices.build
-    end
+#     def new
+#         @post = Post.new
+#         @post.choices.build
+#     end
     
     
    
@@ -65,7 +49,7 @@ class PostsController < ApplicationController
        id = params[:id]
        @post = Post.find(id)
    end
-    
+   
 #    def destroy
 #      @post = current_user.posts.find(params[:id])
 #      @post.destroy
@@ -77,10 +61,9 @@ class PostsController < ApplicationController
 #       params.require(:post).permit(:description, :image, :user_id, :images)
 #         params.require(:post).permit(:description, :image, :user_id, :images=choices_attributes: Choice.attribute_names.map(&:to_sym).push(:_destroy))
 #        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
+# params.require(:post).permit(:description, :image, :user_id, {images: []} )
         
-       # params.require(:post).permit(:description, :image, :user_id, {images: []} )
-        
-        params.require(:post).permit(:description, :image, :user_id, :choices, choices_attributes:[:images])
+        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
         
     end
 end

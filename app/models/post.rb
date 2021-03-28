@@ -20,14 +20,6 @@ class Post < ApplicationRecord
     end
     
     #https://melvinchng.github.io/rails/SearchFeature.html#43-adding-a-simple-search-feature
-    def self.search(content)
-        if content == nil
-            return Post.all
-        end
-        
-        Post.where("post_id = ?", content)
-        
-        
-    end
+
     
 end
