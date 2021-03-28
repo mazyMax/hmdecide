@@ -14,6 +14,7 @@
 
   <p>Choice Create</p>
 
+  <%= f.file_field :images , style: 'display:none'%>
   <%= fields_for :choices do |builder| %>
         <%= render 'choice_fields', f:builder %>
   <% end %>

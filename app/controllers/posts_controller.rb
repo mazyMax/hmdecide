@@ -9,24 +9,34 @@ class PostsController < ApplicationController
       #redirect_to new_choice_path
         
         post_true_params = {description: post_params[:description], image: post_params[:image], user_id: post_params[:user_id]}
+        puts post_true_params
         @post = Post.new(post_true_params)
-        
+
         #@post = Post.new(post_params)
     if @post.valid?
       @post.save
         puts @post.id
         
 #         puts post_params[:images]
+        
+       #choice_params = {choices: post_params[:choices]}
+       #Choice.create(choice_params.take)
 
        images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
        
-       puts images_list_params
+       #puts images_list_params
         
         
-        
+       
        images_list_params[:images].each do |img|
-           choice_params = {images: img, user_id: post_params[:user_id], post_id: @post.id}
+           puts "img!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+           puts img[1]
+           puts img.class
+           choice_params = {images: img[1]['images'], 
+               user_id: post_params[:user_id], 
+               post_id: @post.id}
            #puts choice_params
+           
            Choice.create(choice_params)
        end
         
@@ -70,7 +80,7 @@ class PostsController < ApplicationController
         
        # params.require(:post).permit(:description, :image, :user_id, {images: []} )
         
-        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
+        params.require(:post).permit(:description, :image, :user_id, :choices, choices_attributes:[:images])
         
     end
 end

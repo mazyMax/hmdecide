@@ -4,6 +4,7 @@ class Post < ApplicationRecord
     has_one_attached :image
     accepts_nested_attributes_for :choices, allow_destroy: true
     
+    
     validate :image_presence
     
     def image_presence
