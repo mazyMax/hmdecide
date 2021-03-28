@@ -21,22 +21,20 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
     And I follow "New Vote"
     Then I should be on the post_vote page
     Then I fill in "Description" with "what food"
-    And I upload an image named "steak.jpg"
+    Then I follow "Add Choices"
+    Then show me the page
+    And I upload images named "chicken.jpg, steak.jpg, chicken.jpg, pizza.jpg"
+    #And I upload an image named "steak.jpg"
+    #And I upload an image named "chicken.jpg"
+    #And I upload an image named "pizza.jpg"
     And I press "Create Vote"
-    Then I should be on the choice_upload page
-    And I upload an image named "chicken.jpg"
-    And I fill in "Description" with "chicken"
-    And I press "Create Choice"
     Then I should be on the home page
-    #this redirection is assigned with constant value, which will be implemented fully in the next iteration
-    And I request "what food"
-
-    
+    And I can see "what food"
+   
 # Images are essential to create a vote
 Scenario: Post a new vote without image, and it should fail
     Given I am on the post_vote page
     And I fill in "Description" with "Which book"
     And I press "Create Vote"
-    #Then I should be on the post_vote page
     Then I should see "Image can't be blank"
     
