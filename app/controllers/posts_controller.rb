@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
     
-
     @posts = Post.all
-
     
     def create
 

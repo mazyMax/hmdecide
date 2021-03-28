@@ -5,7 +5,7 @@
     <div class="col-sm-6 col-md-4">
         <h3 style="text-align:center;"><%= choice.description %></h3>
         <% if choice.images.attached? %>
-           <%= image_tag(choice.images, size:"250*300") %>
+           <%= image_tag(choice.images, :size => "300x400") %>
         <% end %>
         <div class="caption" style="text-align:center;">
                 <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
