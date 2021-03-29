@@ -14,10 +14,12 @@
 
   <p>Choice Create</p>
 
-  <%= f.file_field :images , style: 'display:none'%>
+  <% session[:image_count] = 0 %>
+
   <%= fields_for :choices do |builder| %>
         <%= render 'choice_fields', f:builder %>
   <% end %>
+  
 
   <div class ="links">   
   <%= link_to_add_association "Add Choices", f, :choices, class: 'btn btn-default btn-lg'%>

@@ -30,6 +30,17 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
     And I press "Create Vote"
     Then I should be on the home page
     And I can see "what food"
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
    
 # Images are essential to create a vote
 Scenario: Post a new vote without image, and it should fail

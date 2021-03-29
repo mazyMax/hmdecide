@@ -15,7 +15,7 @@
         <% end %>
 
     <% elsif @post.user_id != current_user.id %>
-        NOT CURRENT USER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         <% Post.Corresponding_Choices(@post).each do |choice| %>
 
         <div class="col-sm-6 col-md-4">
@@ -32,7 +32,7 @@
         <% end %>
 
     <% elsif current_user != nil and @post.user_id == current_user.id %>
-        CURRENT USER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         <% Post.Corresponding_Choices(@post).each do |choice| %>            
             <div class="col-sm-6 col-md-4">
             <h3 style="text-align:center;"><%= choice.description %></h3>
@@ -49,7 +49,7 @@
                 
         <div class="caption" style="text-align:center;">
                     <%= button_to post_path(@post.id), method: :delete, remote: true , class: 'btn btn-primary' do %>
-                Close the vote
+                Delete the Vote
                 <% end %>
         </div>
 

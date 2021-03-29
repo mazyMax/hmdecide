@@ -21,7 +21,7 @@ class ChoicesController < ApplicationController
     def upvote
         @choice = Choice.find params[:id]
         @choice.upvote_from current_user
-        redirect_to(root_path)
+        redirect_back(fallback_location: root_path)
     end
     
     

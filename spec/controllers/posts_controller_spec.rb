@@ -31,13 +31,26 @@ describe PostsController do
           post :create, params: {post: hash_param}
         }.to change(Post, :count).by(1)
       end
+  
         
-      it "fails to complete creation with wrong messages" do 
+      it "fails to complete without uploading choices" do 
+          hash_param = FactoryBot.attributes_for(:post)
+          hash_param[:user_id] = User.all.take.id     
+
+          
+          post :create, params: {post: hash_param}
+          flash.now[:notice].should == "Please upload your choices!"
+      end
+        
+      it "fails to complete with wrong information" do
+          
           hash_param = FactoryBot.attributes_for(:post)
           hash_param[:user_id] = User.all.take.id   
           post :create, params: {post: {post:hash_param}}
+          
           flash.now[:messages].should == "User must exist"
-      end
+      end  
+        
         
     end
     
