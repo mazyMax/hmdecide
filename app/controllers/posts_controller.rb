@@ -11,7 +11,7 @@ def create
     puts"11111111"
 
     if @post.valid?   
-        puts"222222222222222"
+        #puts"222222222222222"
         
         if post_params[:choices_attributes] != nil
             @post.save

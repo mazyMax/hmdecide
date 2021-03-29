@@ -8,23 +8,33 @@ Background:
 	And I fill in "Email" with "728977862@qq.com"
 	And I fill in "Password" with "4156GOGOGO"
 	And I press "Log in"
-    And I follow "New Vote"
-    Then I fill in "Description" with "what food"
-    Then I follow "Add Choices"
-    And I upload images named "chicken.jpg, steak.jpg, chicken.jpg, pizza.jpg"
+#    And I follow "New Vote"
+#    Then I fill in "Description" with "what food"
+#    Then I follow "Add Choices"
+#    And I upload images named "chicken.jpg, steak.jpg, chicken.jpg, pizza.jpg"
     #And I upload an image named "steak.jpg"
     #And I upload an image named "chicken.jpg"
     #And I upload an image named "pizza.jpg"
-    And I press "Create Vote"
+#    And I press "Create Vote"
     #this redirection is assigned with constant value, which will be implemented fully in the next iteration
     #And I request "what food"
-    Then I should be on the home page
-    And I can see "what food"
+#    Then I should be on the home page
+#    And I can see "what food"
+    
+    
+    
+#    And I press "Create Vote"
+#    Then I should be on the post_vote page
     
 Scenario: Upvote a post
-    Given I am on the choice page
-    #Then I request "the first post"
+    Given One post named AAAA exist
+    Then I visit the posts page
     Then I should see "Vote"
-    Then I upvote for "what food"
-    Then I should be on the home page
+    Given I am on the home page
+    Given I am on the choices page
+    
+    #Then I request "the first post"
+    
+    Then I upvote for "AAAA"   
+    Then I should see "Vote"
     

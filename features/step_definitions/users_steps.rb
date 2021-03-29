@@ -28,25 +28,45 @@ Given /the following choices exist/ do |choices_table|
   end
 end
 
+
+
+
+
 Given /^PENDING/ do
     pending
 end
 
-# Then /I upload a new post/ do
+#Given /post without image exist/ do
 #     hash_param = {}
 #     hash_param[:description] = "AAAAA"
 #     hash_param[:user_id] = User.where("email = ?", "728977862@qq.com").take.id
-#     file = ActionDispatch::Http::UploadedFile.new
-#     file.tempfile = Rails.root.join('spec', 'factories', 'images', 'harry.jpg')
-#     hash_param[:image] = file
-#     #hash_param[:image] = ActionDispatch::Http::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'))
-#     images_param = {"images"=>Rack::Test::UploadedFile(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
+
+#     hash_param[:image] = ActionDispatch::Http::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'))
+#     images_param = {"images"=>Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
 #     images_list_param = {"12345"=>images_param}       
 #     hash_param["choices_attributes"] = images_list_param
-    
-    
+#     
 #     post posts_path(post: hash_param)
 # end
+Given /One post named AAAA exist/ do
+
+    post_true_params = {"description": "AAAA", "user_id": User.where("Email = ?", "728977862@qq.com").take.id}
+        post_true_params[:image] = Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')
+        @post = Post.new(post_true_params)
+        @post.save
+    choice_params = {
+        "post_id": Post.all.take.id,
+        "user_id": User.where("Email = ?", "728977862@qq.com").take.id
+    }
+    choice_params[:images] = Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')
+    
+    Choice.create(choice_params)
+
+end
+
+Then /I visit the posts page/ do
+    get post_path(id: Post.all.take.id)
+end
 
 Then /I should be redirected to the profile page of "([^"]*)"/ do |email|
   '/user/' + (User.where("email = ?", email).take.id).to_s
