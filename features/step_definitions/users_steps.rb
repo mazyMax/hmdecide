@@ -32,6 +32,22 @@ Given /^PENDING/ do
     pending
 end
 
+# Then /I upload a new post/ do
+#     hash_param = {}
+#     hash_param[:description] = "AAAAA"
+#     hash_param[:user_id] = User.where("email = ?", "728977862@qq.com").take.id
+#     file = ActionDispatch::Http::UploadedFile.new
+#     file.tempfile = Rails.root.join('spec', 'factories', 'images', 'harry.jpg')
+#     hash_param[:image] = file
+#     #hash_param[:image] = ActionDispatch::Http::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'))
+#     images_param = {"images"=>Rack::Test::UploadedFile(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
+#     images_list_param = {"12345"=>images_param}       
+#     hash_param["choices_attributes"] = images_list_param
+    
+    
+#     post posts_path(post: hash_param)
+# end
+
 Then /I should be redirected to the profile page of "([^"]*)"/ do |email|
   '/user/' + (User.where("email = ?", email).take.id).to_s
 end

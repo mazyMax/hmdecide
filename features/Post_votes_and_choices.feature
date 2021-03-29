@@ -32,7 +32,10 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
     And I can see "what food"
     
     
-    
+#Scenario: Vote for a post
+#    Given I am on the home page
+#    Then I upload a new post
+
 
     
     

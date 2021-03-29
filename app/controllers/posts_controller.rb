@@ -5,9 +5,13 @@ class PostsController < ApplicationController
 def create
 
     post_true_params = {description: post_params[:description], image: post_params[:image], user_id: post_params[:user_id]}
-    
+    puts post_params
+    puts post_true_params
     @post = Post.new(post_true_params)
+    puts"11111111"
+
     if @post.valid?   
+        puts"222222222222222"
         
         if post_params[:choices_attributes] != nil
             @post.save
@@ -29,43 +33,12 @@ def create
          
         
     else
+         puts"333333333333333333"
         flash.now[:messages] = @post.errors.full_messages[0]
         render :new
     end
     
-    
-    
-    
-#     images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
-    
-        
-#     if post_params[:choices_attributes] != nil
-#         @post = Post.new(post_true_params)
-    
-#         if @post.valid?
-#           @post.save
-#           puts @post.id
-
-#           images_list_params[:images].each do |img|
-#               choice_params = {images: img[1]['images'], 
-#                   user_id: post_params[:user_id], 
-#                   post_id: @post.id}
-#               Choice.create(choice_params)
-#           end
-#           redirect_to root_path
-    
-
-#         else
-#           flash.now[:messages] = @post.errors.full_messages[0]
-#           render :new
-#         end
-        
-#     else
-#         flash[:notice] = "Please upload your choices!"
-#         render :new
-#     end
-        
-        
+   
         
 end
 
