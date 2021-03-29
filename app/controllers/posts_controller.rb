@@ -48,11 +48,11 @@ class PostsController < ApplicationController
        @post = Post.find(id)
    end
    
-#    def destroy
-#      @post = current_user.posts.find(params[:id])
-#      @post.destroy
-#     redirect_to user_path(current_user)
-#    end
+   def destroy
+     Choice.where("post_id = ?", params[:id]).destroy_all
+     Post.where("id = ?", params[:id]).destroy_all
+     redirect_to root_path
+   end
     
     private
     def post_params

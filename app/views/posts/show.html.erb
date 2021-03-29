@@ -1,16 +1,61 @@
 <tbody>
+
     
-    <% Post.Corresponding_Choices(@post).each do |choice| %>
+    <% if current_user == nil %>
+    <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%>
     
-    <div class="col-sm-6 col-md-4">
-        <h3 style="text-align:center;"><%= choice.description %></h3>
-        <% if choice.images.attached? %>
-           <%= image_tag(choice.images, :size => "300x400") %>
-        <% end %>
-        <div class="caption" style="text-align:center;">
-                <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
-            Vote
-                <spam class="badge"><%= choice.get_upvotes.size%></spam>
+        <% Post.Corresponding_Choices(@post).each do |choice| %>
+
+        <div class="col-sm-6 col-md-4">
+            <h3 style="text-align:center;"><%= choice.description %></h3>
+            <% if choice.images.attached? %>
+               <%= image_tag(choice.images, :size => "300x400") %>
             <% end %>
-        </div>      
+      
+        <% end %>
+
+    <% elsif @post.user_id != current_user.id %>
+        NOT CURRENT USER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        <% Post.Corresponding_Choices(@post).each do |choice| %>
+
+        <div class="col-sm-6 col-md-4">
+            <h3 style="text-align:center;"><%= choice.description %></h3>
+            <% if choice.images.attached? %>
+               <%= image_tag(choice.images, :size => "300x400") %>
+            <% end %>
+            <div class="caption" style="text-align:center;">
+                    <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
+                Vote
+                    <spam class="badge"><%= choice.get_upvotes.size%></spam>
+                <% end %>
+            </div>      
+        <% end %>
+
+    <% elsif current_user != nil and @post.user_id == current_user.id %>
+        CURRENT USER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        <% Post.Corresponding_Choices(@post).each do |choice| %>            
+            <div class="col-sm-6 col-md-4">
+            <h3 style="text-align:center;"><%= choice.description %></h3>
+            <% if choice.images.attached? %>
+               <%= image_tag(choice.images, :size => "300x400") %>
+            <% end %>
+            <div class="caption" style="text-align:center;">
+                    <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
+                Vote
+                    <spam class="badge"><%= choice.get_upvotes.size%></spam>
+                <% end %>
+            </div>      
+        <% end %>
+                
+        <div class="caption" style="text-align:center;">
+                    <%= button_to post_path(@post.id), method: :delete, remote: true , class: 'btn btn-primary' do %>
+                Close the vote
+                <% end %>
+        </div>
+
+    <% elsif current_user == nil%>     
+       flash[:notice] = "ERROR! Please go back to the home page"
+
     <% end %>
+
+
