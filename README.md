@@ -43,8 +43,7 @@ To see spec test coverage results, run: <br />
 
 Our cucumber and spec testing results are as in the attached files.
 
-<h3>
-    3. User stories and RSpec
+### 3. User stories and RSpec
 
 For User stories,  we tested user login and logout, the forget password procedure, view profile,  edit profile, update account, create new posts and choices, search function on the home page and vote function.
 
