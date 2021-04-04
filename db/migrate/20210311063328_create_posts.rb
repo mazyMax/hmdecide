@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.string :visibility
 
+      
       t.timestamps
     end
   end
