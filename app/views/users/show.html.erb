@@ -8,18 +8,29 @@
     
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
-        <h2 class="username">snoopy</h2>
-        <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
+        <h2 class="username">
+          <%= current_user.name %>
+          <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
               <button>Edit Profile</button>
-        </a>
+          </a>
+        </h2>
+        
       </div>
       <ul class="posts">
-        <li><span>2</span> posts</li>
+        <li><span>
+
+          <%= Post.Corresponding_Posts(current_user).count %>
+
+        </span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
-      <h2 class="name">Snoopy</h2>
-      <a class="website">snoopy.com</a>
+      <h2 class="name">
+        <%= current_user.name %>
+      </h2>
+      <a class="website">
+        <%= current_user.website %>
+      </a>
     </div>
   </div>
 </div>
@@ -28,18 +39,6 @@
   <a class="tab active" href="">
     <i class="fa fa-th"></i>
     POSTS
-  </a>
-  <a class="tab" href="">
-    <i class="fa fa-tv"></i>
-    IGTV
-  </a>
-  <a class="tab" href="">
-    <i class="fa fa-bookmark"></i>
-    SAVED
-  </a>
-  <a class="tab" href="">
-    <i class="fa fa-tag"></i>
-    TAGGED
   </a>
 </div>
 
