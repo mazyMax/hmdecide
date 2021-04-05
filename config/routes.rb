@@ -13,4 +13,11 @@ Rails.application.routes.draw do
             put 'unlike', to: 'choices#downvote'
         end
     end
+
+    resources :users do
+        member do
+            put 'follow', to: 'users#follow'
+            put 'unfollow', to: 'users#unfollow'
+        end
+    end
 end

@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string "follows"
-    t.string "followers"
+    t.string "follows", default: ""
+    t.string "followers", default: ""
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.string "name"
+    t.string "name", default: "Empty name"
     t.string "website"
     t.text "bio"
     t.integer "phone"

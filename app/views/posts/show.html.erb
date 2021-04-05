@@ -1,9 +1,34 @@
 <tbody>
+    <% creater_of_the_post = User.find(@post.user_id) %>
+    <a class="user_of_this_profile" href="<%= user_path(creater_of_the_post) %>">
+        Created by <%= creater_of_the_post.name %>
+    </a>
 
-    
-    <% if current_user == nil %>
-    <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%>
-    
+    <div class="caption" style="text-align:center;">
+        <% if current_user != nil and current_user.id != creater_of_the_post.id %>
+
+            <%= button_to follow_user_path([current_user, creater_of_the_post]), 
+            method: :put, 
+            class: 'btn btn-primary' do %>
+                follow
+            <% end %>
+
+
+            <%= button_to unfollow_user_path([current_user, creater_of_the_post]), 
+            method: :put, 
+            class: 'btn btn-primary' do %>
+                unfollow
+            <% end %>
+
+        <% end %>
+    </div>
+
+
+
+
+        <% if current_user == nil %>
+        <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%> 
+
         <% Post.Corresponding_Choices(@post).each do |choice| %>
 
         <div class="col-sm-6 col-md-4">
