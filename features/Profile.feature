@@ -16,9 +16,6 @@ Scenario: Visit the profile page
     Then I follow "Profile"
     And I should see "Edit Profile"
     And I should see "POSTS"
-    And I should see "IGTV"
-    And I should see "SAVED"
-    And I should see "TAGGED"
 
 
 Scenario: Redirect to edit profile page
