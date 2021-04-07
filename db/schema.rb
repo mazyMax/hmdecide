@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
   create_table "choices", force: :cascade do |t|
     t.string "description"
     t.integer "post_id"
-    t.integer "count"
+    t.integer "vote_count", default: 0
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
     t.integer "user_id"
     t.string "visibility", default: ""
     t.string "who_can_see", default: ""
+    t.integer "vote_count", default: 0
+    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

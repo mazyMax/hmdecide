@@ -3,7 +3,7 @@ class CreateChoices < ActiveRecord::Migration[6.0]
     create_table :choices do |t|
       t.string :description
       t.integer :post_id
-      t.integer :count
+      t.integer :vote_count, default: 0
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end

@@ -5,7 +5,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.string :visibility, default: ""
       t.string :who_can_see, array: true, default: ""
-
+      t.integer :vote_count, default: 0
+      t.string :location
       
       t.timestamps
     end

@@ -6,7 +6,7 @@ def create
 
     post_true_params = {description: post_params[:description], 
         image: post_params[:image], user_id: post_params[:user_id], 
-        visibility: post_params[:visibility], who_can_see: post_params[:who_can_see]}
+        visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], location: post_params[:location]}
     puts post_params
     puts post_true_params
     @post = Post.new(post_true_params)
@@ -65,7 +65,7 @@ end
 #        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
 # params.require(:post).permit(:description, :image, :user_id, {images: []} )
         
-        params.require(:post).permit(:description, :image, :user_id, :visibility, :who_can_see, choices_attributes:[:images])
+        params.require(:post).permit(:description, :image, :user_id, :visibility, :who_can_see, :location, choices_attributes:[:images])
         
     end
 end

@@ -9,6 +9,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/muti_upload_choices")
+require("packs/location")
 require("@nathanvda/cocoon")
 //= require jquery
 //= require jquery-ui
