@@ -29,8 +29,12 @@
           <%= Post.Corresponding_Posts(profile_user).count %>
 
         </span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
+        <li><span>
+          <%= profile_user.followers.split(',').length %>
+        </span> followers</li>
+        <li><span>
+          <%=profile_user.follows.split(',').length %>
+        </span> following</li>
       </ul>
       <h2 class="name">
         <%= profile_user.name %>
@@ -50,13 +54,23 @@
 </div>
 
 <div class="user-images">
-   <% Post.Corresponding_Posts(profile_user).each do |post| %>
-    <div class="wrapper">
-       
-      <% if post.image.attached? %>
-        <%= link_to(image_tag(url_for(post.image), :size => "200x300"), post_path(post.id)) %>
-          
-        <% end %>
-    </div>
+  <% 
+    if current_user == nil
+      looker_id = -1  
+    else 
+      looker_id = current_user.id 
+    end 
+  %>
+  
+  <% filtered_posts = Post.visibility_filter( Post.Corresponding_Posts(profile_user), looker_id ) %>
+  <% filtered_posts.each do |post| %>
+  <div class="wrapper">
+      
+    <% if post.image.attached? %>
+      <%= link_to(image_tag(url_for(post.image), :size => "200x300"), post_path(post.id)) %>
+        
+      <% end %>
+  </div>
   <% end %>
+
 </div>

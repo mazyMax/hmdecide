@@ -16,7 +16,7 @@
       <form class="navbar-form navbar-left">
         <div class="form-group">
 
-            <%= form_tag(root_path, method: :get , class: "form-control") do %>  
+            <%= form_tag(root_path, method: :get , class: "form-control") do %>
             <%= text_field_tag :search, params[:search]%>
               <%= submit_tag("Submit", :class => "btn btn-default" ) %>
           <% end %>

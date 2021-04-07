@@ -10,6 +10,14 @@
     <div class="form-group">
     <%= f.text_field :user_id, value: current_user.id, style: 'display:none'%>
   </div>
+  <div class="form-group">
+    <%= f.label :visibility %>
+    <%= f.text_field :visibility %>
+  </div>
+    <div class="form-group">
+    <%= f.label :who_can_see %>
+    <%= f.text_field :who_can_see %>
+  </div>
   <br>
 
   <p>Choice Create</p>
