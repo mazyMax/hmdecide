@@ -19,20 +19,33 @@ class Post < ApplicationRecord
         return Post.where("user_id = ?", user_id)
     end
 
+    def self.who_can_see_preprocess(creator_id, see_string)
+        see_list = see_string.split(',')
+        see_list << creator_id.to_s
+        see_list = see_list.uniq
+        return see_list.join(",")
+    end
+
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
-        if looker_id == -1
-            unfiltered_posts.each do |p|
-                puts p.visibility
-                puts p.class
-                if p.visibility == "private"
+
+        unfiltered_posts.each do |p|
+            puts p.visibility
+            puts p.class
+            if p.visibility == "private"
+                unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
+            elsif p.who_can_see != ""
+                see_list = p.who_can_see.split(',')
+
+                puts "!!!!!!!"
+                puts see_list
+                if !(see_list.include?(looker_id.to_s))
+                    puts Post.where("id = ?", p.id)
                     unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
-                elsif p.visibility == "followers"
-                    #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 end
+                #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             end
-        else
         end
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts unfiltered_posts.class

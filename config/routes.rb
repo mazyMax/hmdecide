@@ -14,6 +14,14 @@ Rails.application.routes.draw do
         end
     end
 
+    resources :posts do
+        member do
+            post 'change_to_public', to: 'posts#change_to_public'
+            post 'change_to_private', to: 'posts#change_to_private'
+            post 'change_who_can_see', to: 'posts#change_who_can_see'
+        end
+    end
+
     resources :users do
         member do
             put 'follow', to: 'users#follow'
