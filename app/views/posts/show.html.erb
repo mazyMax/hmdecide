@@ -31,53 +31,65 @@
 
         <% Post.Corresponding_Choices(@post).each do |choice| %>
 
-        <div class="col-sm-6 col-md-4">
             <h3 style="text-align:center;"><%= choice.description %></h3>
+         <div class="card movie_card">
+            <div class="img">
             <% if choice.images.attached? %>
-               <%= image_tag(choice.images, :size => "300x400") %>
+               <%= image_tag(choice.images,:class => "img") %>
+                </div>
             <% end %>
-      
+         </div>
+           
+             
         <% end %>
 
     <% elsif @post.user_id != current_user.id %>
 
         <% Post.Corresponding_Choices(@post).each do |choice| %>
-
-        <div class="col-sm-6 col-md-4">
-            <h3 style="text-align:center;"><%= choice.description %></h3>
+    <div class="card movie_card">
+            <div class="img">
+        
             <% if choice.images.attached? %>
-               <%= image_tag(choice.images, :size => "300x400") %>
+               <%= image_tag(choice.images,:class => "img") %>
             <% end %>
-            <div class="caption" style="text-align:center;">
-                    <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
+        </div>
+       <div class="caption" style="text-align:center;">
+        <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
                 Vote
                     <spam class="badge"><%= choice.get_upvotes.size%></spam>
-                <% end %>
-            </div>      
+        <% end %>
+        </div>
+    </div>
+                  
         <% end %>
 
     <% elsif current_user != nil and @post.user_id == current_user.id %>
 
-        <% Post.Corresponding_Choices(@post).each do |choice| %>            
-            <div class="col-sm-6 col-md-4">
-            <h3 style="text-align:center;"><%= choice.description %></h3>
+        <% Post.Corresponding_Choices(@post).each do |choice| %>  
+    <div class="card movie_card">
+            <div class="img">
             <% if choice.images.attached? %>
-               <%= image_tag(choice.images, :size => "300x400") %>
+               <%= image_tag(choice.images,:class => "img") %>
             <% end %>
-            <div class="caption" style="text-align:center;">
-                    <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
+        </div>
+        <div class="caption" style="text-align:center;">
+        <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
                 Vote
                     <spam class="badge"><%= choice.get_upvotes.size%></spam>
-                <% end %>
-            </div>      
         <% end %>
-        
+        </div>
+    </div>
+        <% end %>
+    
+    
+    <div class="btn-container">
+        <div class="btn-holder">
         <div class="caption" style="text-align:center;">
+
                     <%= button_to post_path(@post.id), method: :delete, class: 'btn btn-primary' do %>
                 Delete the Vote
                 <% end %>
         </div>
-
         <div class="caption" style="text-align:center;">
                     <%= button_to change_to_public_post_path(@post.id), method: :post, class: 'btn btn-primary' do %>
                 Change to public
@@ -99,7 +111,11 @@
             <% end %>
 
         </div>
+        </div>
+    </div>
+        
 
+    
 
     <% elsif current_user == nil%>     
        flash[:notice] = "ERROR! Please go back to the home page"

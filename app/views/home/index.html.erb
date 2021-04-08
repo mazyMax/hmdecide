@@ -12,37 +12,24 @@
 
 </body>
 
-<div class="posts">
+
   <% @posts.each do |post| %>
-    <section class="post">
-      <div class="user">
-    <div class="avatar">
-      <%= image_tag ("snoopy.jpg") %>
-    </div>
-    <div class="username">
-      <%= post.user.username %>
-    </div>
-      </div>
-  
-  
-  <% if post.image.attached? %>
-           <%= link_to(image_tag(url_for(post.image), :size => "400x500"), post_path(post.id)) %>
-           <% end %>
-        
-    <div class="description">
-    <%= post.description %>
-    </div>
-
+     
+    <div class="card movie_card">
       
-    </section>
-  <% end %>
+        <div class="img">
+    <% if post.image.attached? %>
+           <%= link_to(image_tag(url_for(post.image),:class => "img"), post_path(post.id)) %>
+    <% end %>  
+        </div>
+    <div class="card-body">
+        <h5 class="card-title"><%= post.description %></h5>
+          <span class="movie_info"><%= post.user.username %></span>
+      </div>
 </div>
+  <% end %>
+
 <div id="demo"></div>
-
-
-
-
-
 
 <script type="text/javascript">
     var x=document.getElementById("demo");

@@ -1,3 +1,6 @@
+<div class="panel panel-default">
+<div class="panel-body">
+    <p>Vote Create</p>
 <%= form_for Post.new do |f| %>
   <div class="form-group">
     <%= f.label :description %>
@@ -15,9 +18,15 @@
   <div class="form-group">
     <%= f.text_field :user_id, value: current_user.id, style: 'display:none'%>
   </div>
-   
+   <!-- https://stackoverflow.com/questions/746387/labels-for-radio-buttons-in-rails-form -->
   <div class="form-group">
-    <%= f.label :visibility %>
+    <%= f.label :visibility %><br>
+    <%= f.radio_button :contactmethod, 'email', :checked => true %> 
+    <%= label :contactmethod_email, 'Public' %>
+     <%= f.radio_button :contactmethod, 'email', :checked => true %> 
+    <%= label :contactmethod_email, 'Private' %>
+      <%= f.radio_button :contactmethod, 'email', :checked => true %> 
+    <%= label :contactmethod_email, 'Only Followers' %>
     <%= f.text_field :visibility %>
   </div>
     <div class="form-group">
@@ -36,7 +45,7 @@
   
 
   <div class ="links">   
-  <%= link_to_add_association "Add Choices", f, :choices, class: 'btn btn-default btn-lg'%>
+  <%= link_to_add_association "Add Choices", f, :choices, class: 'btn btn-default'%>
   </div>
 
 
@@ -44,6 +53,8 @@
     <%= f.submit 'Create Vote', class: 'btn btn-primary' %>
   </div>
 <% end %>
+    </div>
+</div>
 
 <script type="text/javascript">
     var x=document.getElementById("demo");
