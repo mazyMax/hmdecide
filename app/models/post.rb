@@ -29,13 +29,13 @@ class Post < ApplicationRecord
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
-
+        puts unfiltered_posts.take.id
         unfiltered_posts.each do |p|
             puts p.visibility
             puts p.class
             if p.visibility == "private" and looker_id != p.user_id
                 unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
-            elsif p.visibility = "follow"
+            elsif p.visibility == "follow"
                 see_list = p.who_can_see.split(',')
 
                 puts "!!!!!!!"
@@ -45,13 +45,17 @@ class Post < ApplicationRecord
                     unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
                 end
                 #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             end
         end
-        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        puts unfiltered_posts.class
+        puts "!```````````````````!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!```````````````````"
+        puts unfiltered_posts.take.id
         return unfiltered_posts
     end
 
+    def self.add_to_block_list(unfiltered_posts)
+
+    end
 
     #https://melvinchng.github.io/rails/SearchFeature.html#43-adding-a-simple-search-feature
 
