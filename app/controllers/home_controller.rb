@@ -23,6 +23,7 @@ class HomeController < ApplicationController
       puts params
       @posts = Post.all
       @posts = Post.visibility_filter(@posts, looker_id)
+      # @posts = recommend(posts,looker_id)
     end
     
     

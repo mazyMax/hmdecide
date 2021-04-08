@@ -29,7 +29,7 @@ class Post < ApplicationRecord
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
-        
+
         unfiltered_posts.each do |p|
             puts p.visibility
             puts p.class
@@ -51,6 +51,15 @@ class Post < ApplicationRecord
         puts "!```````````````````!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!```````````````````"
 
         return unfiltered_posts
+    end
+
+    def self.recommend(unsorted_posts, looker_id)
+    end
+
+    def self.sort_by_location(unsorted_posts, looker_id)
+        order_by_location = Array.new
+        my_location = looker_id
+
     end
 
     def self.add_to_block_list(unfiltered_posts)
