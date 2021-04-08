@@ -29,7 +29,7 @@ class Post < ApplicationRecord
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
-        puts unfiltered_posts.take.id
+        
         unfiltered_posts.each do |p|
             puts p.visibility
             puts p.class
@@ -49,7 +49,7 @@ class Post < ApplicationRecord
             end
         end
         puts "!```````````````````!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!```````````````````"
-        puts unfiltered_posts.take.id
+
         return unfiltered_posts
     end
 

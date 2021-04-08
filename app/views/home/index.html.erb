@@ -13,21 +13,23 @@
 </body>
 
 
-  <% @posts.each do |post| %>
-     
-    <div class="card movie_card">
-      
-        <div class="img">
+<% @posts.each do |post| %>
+    
+<div class="card movie_card">
+    
+  <div class="img">
     <% if post.image.attached? %>
-           <%= link_to(image_tag(url_for(post.image),:class => "img"), post_path(post.id)) %>
+      <%= link_to(image_tag(url_for(post.image),:class => "img"), post_path(post.id)) %>
     <% end %>  
-        </div>
-    <div class="card-body">
-        <h5 class="card-title"><%= post.description %></h5>
-          <span class="movie_info"><%= post.user.username %></span>
-      </div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.description %></h5>
+    <span class="movie_info"><%= post.user.username %></span>
+  </div>
 </div>
-  <% end %>
+<% end %>
+
+
 
 <div id="demo"></div>
 
