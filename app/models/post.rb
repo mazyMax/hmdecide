@@ -33,9 +33,9 @@ class Post < ApplicationRecord
         unfiltered_posts.each do |p|
             puts p.visibility
             puts p.class
-            if p.visibility == "private"
+            if p.visibility == "private" and looker_id != p.user_id
                 unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
-            elsif p.who_can_see != ""
+            elsif p.visibility = "follow"
                 see_list = p.who_can_see.split(',')
 
                 puts "!!!!!!!"
