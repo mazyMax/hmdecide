@@ -42,6 +42,16 @@ class Post < ApplicationRecord
 
     end
 
+    def self.closed_filter(unfiltered_posts, looker_id)
+        remain_posts = unfiltered_posts
+        unfiltered_posts.each do |p|
+            if p.close == 1
+                remain_posts = remain_posts - Post.where("id = ?", p.id)
+            end
+        end
+        return remain_posts
+    end
+
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
@@ -84,7 +94,8 @@ class Post < ApplicationRecord
             remain_posts -= first_3_emergency
 
             first_5_follows = Post.where(user_id: follows_list).order(created_at: :desc)
-            first_5_follows = visibility_filter(first_5_follows, looker_id).take(5)
+            first_5_follows = Post.visibility_filter(first_5_follows, looker_id)
+            first_5_follows = Post.closed_filter(first_5_follows, looker_id).take(5)
             remain_posts -= first_5_follows
 
             first_3_popular = remain_posts.sort_by{|u| u.vote_count}.reverse.take(3)

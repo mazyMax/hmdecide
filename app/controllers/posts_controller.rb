@@ -16,9 +16,6 @@ class PostsController < ApplicationController
             puts"00000000000000000000000000000000000000000000000000000000000000000000000"
             post_true_params[:who_can_see] = Post.who_can_see_preprocess(post_true_params[:user_id], post_true_params[:who_can_see])
         end
-        if post_true_params[:existingtime] == ""
-            post_true_params[:existingtime] = "-1"
-        end
 
         @post = Post.new(post_true_params)      
         puts"11111111"

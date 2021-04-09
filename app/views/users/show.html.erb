@@ -46,16 +46,20 @@
   </div>
 </div>
 
-<%
-=begin%>
+ 
  <div class="user-tabs">
   <a class="tab active" href="">
     <i class="fa fa-th"></i>
     POSTS
   </a>
-</div> 
-<%
-=end%>
+    <a class="tab active" href="">
+    <i class="fa fa-th"></i>
+    CLOSED POSTS
+  </a>
+</div>  
+
+
+
 
 <div class="user-images">
   <% 
@@ -67,6 +71,7 @@
   %>
   
   <% filtered_posts = Post.visibility_filter( Post.Corresponding_Posts(profile_user), looker_id ) %>
+  <% filtered_posts = Post.closed_filter( filtered_posts, looker_id ) %>
   <% filtered_posts.each do |post| %>
   <div class="card movie_card">
     

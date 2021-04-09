@@ -13,12 +13,13 @@ class HomeController < ApplicationController
 
       @posts = Post.where(["description LIKE ?","%#{params[:search]}%"]).order(created_at: :desc)
       @posts = Post.visibility_filter(@posts, looker_id)
-
+      @posts = Post.closed_filter(@posts, looker_id)
     elsif params[:location] != nil
 
       puts "########################################################"
-      puts params[:location]     
+      puts params[:location]
       @posts = Post.visibility_filter(@posts, looker_id)
+      @posts = Post.closed_filter(@posts, looker_id)
       if params[:location] == "nolocation"
 
         flash["notice"] = "We can not get your location."
@@ -34,11 +35,13 @@ class HomeController < ApplicationController
 
       @posts = Post.get_follows(@posts, looker_id)
       @posts = Post.visibility_filter(@posts, looker_id)
+      @posts = Post.closed_filter(@posts, looker_id)
 
     elsif params[:popular] != nil
 
       @posts = Post.get_popular(@posts, looker_id)
-      @posts = Post.visibility_filter(@posts, looker_id).take(8)
+      @posts = Post.visibility_filter(@posts, looker_id)
+      @posts = Post.closed_filter(@posts, looker_id).take(8)
 
     else
 
@@ -46,6 +49,7 @@ class HomeController < ApplicationController
       puts "????????????????????????????????????????????????????????????????"
       puts params
       @posts = Post.visibility_filter(@posts, looker_id)
+      @posts = Post.closed_filter(@posts, looker_id)
       @posts = Post.recommend(@posts, looker_id)
 
     end
