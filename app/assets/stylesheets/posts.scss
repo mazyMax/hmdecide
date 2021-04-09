@@ -138,11 +138,16 @@
       background:rgba(255,255,255,1);
       box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.5), 0 4px 15px 0 rgba(0, 0, 0, 0.5);
     }
+ .movie-card:hover {
+ transform: scale(1.02);
+ transition: all 0.4s;
+  }
     .movie_card img{
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       height: 33rem;
     }
+
     .movie_info{
       color: #5e5c5c;
     }
