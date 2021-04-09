@@ -68,13 +68,18 @@
   
   <% filtered_posts = Post.visibility_filter( Post.Corresponding_Posts(profile_user), looker_id ) %>
   <% filtered_posts.each do |post| %>
-  <div class="wrapper">
-      
+  <div class="card movie_card">
+    
+  <div class="img">
     <% if post.image.attached? %>
-      <%= link_to(image_tag(url_for(post.image), :size => "200x300"), post_path(post.id)) %>
-        
-      <% end %>
+      <%= link_to(image_tag(url_for(post.image),:class => "img"), post_path(post.id)) %>
+    <% end %>  
   </div>
-  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.description %></h5>
+    <span class="movie_info"><%= post.user.username %></span>
+  </div>
+</div>
+<% end %>
 
 </div>

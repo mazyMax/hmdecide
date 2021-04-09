@@ -4,28 +4,6 @@
         Created by <%= creater_of_the_post.name %>
     </a>
 
-    <div class="caption" style="text-align:center;">
-        <% if current_user != nil and current_user.id != creater_of_the_post.id %>
-
-            <%= button_to follow_user_path([current_user, creater_of_the_post]), 
-            method: :put, 
-            class: 'btn btn-primary' do %>
-                follow
-            <% end %>
-
-
-            <%= button_to unfollow_user_path([current_user, creater_of_the_post]), 
-            method: :put, 
-            class: 'btn btn-primary' do %>
-                unfollow
-            <% end %>
-
-        <% end %>
-    </div>
-
-
-
-
         <% if current_user == nil %>
         <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%> 
 
@@ -73,7 +51,7 @@
             <% end %>
         </div>
         <div class="caption" style="text-align:center;">
-        <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary' do %>
+        <%= button_to like_choice_path(choice), method: :put, remote: true , class: 'btn btn-primary btn-lg' do %>
                 Vote
                     <spam class="badge"><%= choice.get_upvotes.size%></spam>
         <% end %>
@@ -86,31 +64,31 @@
         <div class="btn-holder">
         <div class="caption" style="text-align:center;">
 
-                    <%= button_to post_path(@post.id), method: :delete, class: 'btn btn-primary' do %>
+                    <%= button_to post_path(@post.id), method: :delete, class: 'btn btn-primary btn-lg' do %>
                 Delete the Vote
                 <% end %>
         </div>
         <div class="caption" style="text-align:center;">
-                    <%= button_to change_to_public_post_path(@post.id), method: :post, class: 'btn btn-primary' do %>
+                    <%= button_to change_to_public_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
                 Change to public
                 <% end %>
         </div>
 
         <div class="caption" style="text-align:center;">
-                    <%= button_to change_to_private_post_path(@post.id), method: :post, class: 'btn btn-primary' do %>
+                    <%= button_to change_to_private_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
                 Change to private
                 <% end %>
         </div>
 
 
-        <div class="caption" style="text-align:center;">
-
-            <%= form_tag(change_who_can_see_post_path, method: :post , class: "form-control") do %>
-            <%= text_field_tag :who_can_see, params[:who_can_see]%>
-              <%= submit_tag("Change who can see", :class => "btn btn-default" ) %>
-            <% end %>
-
-        </div>
+        
+<!--div class="caption" style="text-align:center;">
+            <!%= form_tag(change_who_can_see_post_path, method: :post , class: "form-control") do %>
+            <!%= text_field_tag :who_can_see, params[:who_can_see]%>
+              <!%= submit_tag("Change who can see", :class => "btn btn-default" ) %>
+            <!% end %>
+ </div-->
+        
         </div>
     </div>
         
@@ -122,4 +100,21 @@
 
     <% end %>
 
+<div class="btn-group" role="group" aria-label="...">
+    <% if current_user != nil and current_user.id != creater_of_the_post.id %>
+    
+            <%= button_to follow_user_path([current_user, creater_of_the_post]), 
+            method: :put, 
+            class: 'button1' do %>
+                follow
+            <% end %>
+    
 
+            <%= button_to unfollow_user_path([current_user, creater_of_the_post]), 
+            method: :put, 
+            class: 'button1' do %>
+                unfollow
+            <% end %>
+
+        <% end %>
+    </div>
