@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       
       t.string :existingtime, default: ""
       t.integer :close, default: 0
+      t.string :hash_tags, default: ""
       
       t.timestamps
     end

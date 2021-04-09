@@ -52,6 +52,39 @@ class Post < ApplicationRecord
         return remain_posts
     end
 
+    def self.do_search(unfiltered_posts, search_content)
+        remain_posts = unfiltered_posts
+        description_result = Post.where(["description LIKE ?","%#{search_content}%"]).order(created_at: :desc)
+        tags_result = Post.where(["hash_tags LIKE ?","%#{search_content}%"]).order(created_at: :desc)
+        return (description_result + tags_result).uniq
+    end
+
+
+    def self.close_posts_using_time(unfiltered_posts)
+        remain_posts = unfiltered_posts
+        unfiltered_posts.each do |p|
+            puts p.created_at.class
+            puts "created at"
+            puts p.created_at
+            puts "now"
+            puts Time.zone.now
+            puts "existing time"
+            puts Time.zone.now - p.created_at
+            puts (Time.zone.now - p.created_at)/60
+            puts "post existing time"
+            puts p.existingtime
+            puts p.existingtime.to_f
+            if p.existingtime != ""
+                if p.existingtime.to_f < (Time.zone.now - p.created_at)/60
+                    Post.where("id = ?", p.id).update({"close": 1})
+                    remain_posts = remain_posts - Post.where("id = ?", p.id)
+                end
+            end
+        end
+        return remain_posts
+
+    end
+
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id

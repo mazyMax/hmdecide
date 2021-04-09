@@ -45,7 +45,7 @@
 
         <% Post.Corresponding_Choices(@post).each do |choice| %>  
     <div class="card movie_card">
-            <div class="img">
+        <div class="img">
             <% if choice.images.attached? %>
                <%= image_tag(choice.images,:class => "img") %>
             <% end %>

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
     t.string "location"
     t.string "existingtime", default: ""
     t.integer "close", default: 0
+    t.string "hash_tags", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

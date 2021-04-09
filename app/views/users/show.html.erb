@@ -11,6 +11,13 @@
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
         <h2 class="username">
+          <% if profile_user.vote_count.to_i >= 10 %>
+            <%= "Expert Voter" %>
+          <% elsif profile_user.vote_count.to_i >= 5 %>
+            <%= "Passionate Voter" %>
+          <% elsif profile_user.vote_count.to_i >= 1 %>
+            <%= "Noob Voter" %>
+          <% end %>
 
           <%= profile_user.name %>
 
@@ -42,6 +49,7 @@
       <a class="website">
         <%= profile_user.website %>
       </a>
+
     </div>
   </div>
 </div>

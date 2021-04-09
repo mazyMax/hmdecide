@@ -7,11 +7,10 @@ class HomeController < ApplicationController
       looker_id = current_user.id
     end
     @posts = Post.all
-    
+    @posts = Post.close_posts_using_time(@posts)
     
     if params[:search] != nil
-
-      @posts = Post.where(["description LIKE ?","%#{params[:search]}%"]).order(created_at: :desc)
+      @posts = Post.do_search(@posts, params[:search])
       @posts = Post.visibility_filter(@posts, looker_id)
       @posts = Post.closed_filter(@posts, looker_id)
     elsif params[:location] != nil

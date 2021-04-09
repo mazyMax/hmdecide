@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: [:close_posts]
 
     @posts = Post.all
     
@@ -7,7 +8,8 @@ class PostsController < ApplicationController
         post_true_params = {description: post_params[:description], 
             image: post_params[:image], user_id: post_params[:user_id], 
             visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], 
-            location: post_params[:location], existingtime: post_params[:existingtime]}
+            location: post_params[:location], existingtime: post_params[:existingtime], 
+            hash_tags: post_params[:hash_tags] }
         puts post_params
         puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
         puts post_true_params
@@ -85,7 +87,9 @@ class PostsController < ApplicationController
     # end
 
 
-    def close
+    def close_posts
+        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        puts params
         Post.find(params[:id]).update({"close": 1})
         flash[:notice] = "Vote closed!"
         redirect_to post_path(params[:id])
@@ -110,7 +114,7 @@ class PostsController < ApplicationController
 #        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
 # params.require(:post).permit(:description, :image, :user_id, {images: []} )
         
-        params.require(:post).permit(:description, :image, :user_id, :visibility, :who_can_see, :existingtime, :location, choices_attributes:[:images])
+        params.require(:post).permit(:description, :image, :user_id, :visibility, :hash_tags, :who_can_see, :existingtime, :location, choices_attributes:[:images])
         
     end
 end
