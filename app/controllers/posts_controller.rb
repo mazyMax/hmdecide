@@ -8,10 +8,11 @@ class PostsController < ApplicationController
             image: post_params[:image], user_id: post_params[:user_id], 
             visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], location: post_params[:location]}
         puts post_params
+        puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
         puts post_true_params
-        if post_true_params[:who_can_see] != ""
+        if post_true_params[:visibility] == "follow"
+            # choose several followers
             puts"00000000000000000000000000000000000000000000000000000000000000000000000"
-            post_true_params[:visibility] = "follow"
             post_true_params[:who_can_see] = Post.who_can_see_preprocess(post_true_params[:user_id], post_true_params[:who_can_see])
         end
         @post = Post.new(post_true_params)      

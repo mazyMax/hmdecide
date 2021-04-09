@@ -10,6 +10,17 @@
       </div>
 </div>
 
+<div class="caption" style="text-align:center;">
+<form class = "button_to" method="get" action="/">
+
+<button class="btn btn-primary" type="submit">
+    Show me the nearest votes
+</button>
+<div id = "demo">
+</div>
+</form>
+</div>
+
 
 
 
@@ -30,9 +41,6 @@
 <% end %>
 
 
-
-<div id="demo"></div>
-
 <script type="text/javascript">
     var x=document.getElementById("demo");
     getLocation();
@@ -42,7 +50,9 @@
         {
         navigator.geolocation.getCurrentPosition(showPosition);
         }
-      else{x.innerHTML="Geolocation is not supported by this browser.";}
+      else {
+        document.getElementById("demo").innerHTML = "<input style=\"display:none\" name=\"location\" value=\"" + "nolocation" + "\">";
+        }
     }
     function showPosition(position)
     {
@@ -50,7 +60,8 @@
         var lat = position.coords.latitude;
         var site = lat.toFixed(6)+','+lng.toFixed(6);
         console.log(site)
-           document.getElementById("demo").innerHTML = site;
+           document.getElementById("demo").innerHTML = "<input style=\"display:none\" name=\"location\" value=\"" + site + "\">";
+
     }
 
 </script>
