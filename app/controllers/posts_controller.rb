@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
         post_true_params = {description: post_params[:description], 
             image: post_params[:image], user_id: post_params[:user_id], 
-            visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], location: post_params[:location]}
+            visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], 
+            location: post_params[:location], existingtime: post_params[:existingtime]}
         puts post_params
         puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
         puts post_true_params
@@ -15,6 +16,10 @@ class PostsController < ApplicationController
             puts"00000000000000000000000000000000000000000000000000000000000000000000000"
             post_true_params[:who_can_see] = Post.who_can_see_preprocess(post_true_params[:user_id], post_true_params[:who_can_see])
         end
+        if post_true_params[:existingtime] == ""
+            post_true_params[:existingtime] = "-1"
+        end
+
         @post = Post.new(post_true_params)      
         puts"11111111"
 
@@ -68,19 +73,19 @@ class PostsController < ApplicationController
         redirect_to post_path(params[:id])
     end
 
-    def change_who_can_see
-        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        puts params
-        if params[:who_can_see] == ""
-            Post.find(params[:id]).update({"visibility": "private", "who_can_see": ""})
-            flash[:notice] = "Changed to private!"
-            redirect_to post_path(params[:id])
-        else
-            Post.find(params[:id]).update({"who_can_see": params[:who_can_see]})
-            flash[:notice] = "Only " + params[:who_can_see].to_s + " can see this post!"
-            redirect_to post_path(params[:id])
-        end
-    end
+    # def change_who_can_see
+    #     puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    #     puts params
+    #     if params[:who_can_see] == ""
+    #         Post.find(params[:id]).update({"visibility": "private", "who_can_see": ""})
+    #         flash[:notice] = "Changed to private!"
+    #         redirect_to post_path(params[:id])
+    #     else
+    #         Post.find(params[:id]).update({"who_can_see": params[:who_can_see]})
+    #         flash[:notice] = "Only " + params[:who_can_see].to_s + " can see this post!"
+    #         redirect_to post_path(params[:id])
+    #     end
+    # end
 
 
     def close
@@ -108,7 +113,7 @@ class PostsController < ApplicationController
 #        params.require(:post).permit(:description, :image, :user_id, choices_attributes:[:images])
 # params.require(:post).permit(:description, :image, :user_id, {images: []} )
         
-        params.require(:post).permit(:description, :image, :user_id, :visibility, :who_can_see, :location, choices_attributes:[:images])
+        params.require(:post).permit(:description, :image, :user_id, :visibility, :who_can_see, :existingtime, :location, choices_attributes:[:images])
         
     end
 end
