@@ -21,8 +21,8 @@ class ChoicesController < ApplicationController
     def upvote
         @choice = Choice.find params[:id]
         @choice.upvote_from current_user
-        @choice.vote_count = @choice.vote_count + 1
-        Post.find(@choice.post_id).vote_count = Post.find(@choice.post_id).vote_count + 1
+        @choice.update({"vote_count":  @choice.vote_count + 1  })
+        Post.find(@choice.post_id).update({"vote_count": Post.find(@choice.post_id).vote_count + 1})
         redirect_back(fallback_location: root_path)
     end
     

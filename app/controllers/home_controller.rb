@@ -23,7 +23,6 @@ class HomeController < ApplicationController
         flash["notice"] = "We can not get your location."
         redirect_to root_path
       else
-        @posts = Post.visibility_filter(@posts, looker_id)
         @posts = Post.sort_by_location(@posts, params[:location])
       end
 
@@ -34,7 +33,7 @@ class HomeController < ApplicationController
       puts params
       @posts = Post.all
       @posts = Post.visibility_filter(@posts, looker_id)
-      # @posts = recommend(posts,looker_id)
+      @posts = Post.recommend(@posts, looker_id)
 
     end
     

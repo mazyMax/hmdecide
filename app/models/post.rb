@@ -3,8 +3,6 @@ class Post < ApplicationRecord
     has_many :choices
     has_one_attached :image
     accepts_nested_attributes_for :choices, allow_destroy: true
-    
-    
     validate :image_presence
     
     def image_presence
@@ -47,32 +45,54 @@ class Post < ApplicationRecord
     def self.visibility_filter(unfiltered_posts, looker_id)
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         puts looker_id
-
+        remain_posts = unfiltered_posts
         unfiltered_posts.each do |p|
             puts p.visibility
             puts p.class
             if p.visibility == "private" and looker_id != p.user_id
-                unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
+                remain_posts = remain_posts - Post.where("id = ?", p.id)
             elsif p.visibility == "follow"
                 see_list = p.who_can_see.split(',')
 
-                puts "!!!!!!!"
+                puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
                 puts see_list
                 if !(see_list.include?(looker_id.to_s))
-                    puts Post.where("id = ?", p.id)
-                    unfiltered_posts = unfiltered_posts - Post.where("id = ?", p.id)
+                    puts Post.where("id = ?", p.id).take.description
+                    remain_posts = remain_posts - Post.where("id = ?", p.id)
                 end
                 #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             end
         end
-        puts "!```````````````````!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!```````````````````"
 
-        return unfiltered_posts
+        return remain_posts
     end
 
-    def self.recommend(unsorted_posts, looker_id)
-        
+    def self.recommend(unrecommended_posts, looker_id)
+        puts unrecommended_posts
+        if looker_id == -1
+            return unrecommended_posts
+        else
+            follows = User.find(looker_id).follows
+            follows_list = follows.split(",").map {|a| a.to_i}
+            puts follows_list.to_s
+            puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+
+            remain_posts = unrecommended_posts
+
+            first_3_emergency = unrecommended_posts.sort_by{|u| u.created_at}.take(3)
+            remain_posts -= first_3_emergency
+
+            first_5_follows = Post.where(user_id: follows_list).order(created_at: :desc)
+            first_5_follows = visibility_filter(first_5_follows, looker_id).take(5)
+            remain_posts -= first_5_follows
+
+            first_3_popular = remain_posts.sort_by{|u| u.vote_count}.reverse.take(3)
+            remain_posts -= first_3_popular
+ 
+            return (first_3_emergency + first_3_popular + first_5_follows + remain_posts).uniq
+            
+        end
     end
 
     #https://blog.csdn.net/wccxiaoan/article/details/7617415
@@ -97,7 +117,7 @@ class Post < ApplicationRecord
     def self.sort_by_location(unsorted_posts, location)
         location_list = location.split(",")
         sort_hash = Hash.new
-        Post.all.each do |p|
+        unsorted_posts.each do |p|
             if p.location != ""
                 post_loction_list = p.location.split(",")
                 sort_hash[p.id] = Post.calculate_distance(location_list[0], location_list[1],post_loction_list[0],post_loction_list[1])
