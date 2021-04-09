@@ -3,7 +3,7 @@
     <a class="user_of_this_profile" href="<%= user_path(creater_of_the_post) %>">
         Created by <%= creater_of_the_post.name %>
     </a>
-
+        <%= @post.description %>
         <% if current_user == nil %>
         <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%> 
 

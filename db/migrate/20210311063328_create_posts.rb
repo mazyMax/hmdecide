@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :description
       t.integer :user_id
       t.string :visibility, default: ""
-      t.string :who_can_see, array: true, default: ""
+      t.string :who_can_see, default: ""
       t.integer :vote_count, default: 0
       t.string :location
       

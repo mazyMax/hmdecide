@@ -11,8 +11,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      t.string :follows,  array: true, default: ""
-      t.string :followers,  array: true, default: ""
+      t.string :follows, default: ""
+      t.string :followers, default: ""
       t.integer :vote_count, default: 0
       ## Rememberable
       t.datetime :remember_created_at
