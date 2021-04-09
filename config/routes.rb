@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
+        
         member do
             post 'change_to_public', to: 'posts#change_to_public'
             post 'change_to_private', to: 'posts#change_to_private'

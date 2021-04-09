@@ -62,22 +62,29 @@
     
     <div class="btn-container">
         <div class="btn-holder">
-        <div class="caption" style="text-align:center;">
-
-                    <%= button_to post_path(@post.id), method: :delete, class: 'btn btn-primary btn-lg' do %>
-                Delete the Vote
-                <% end %>
-        </div>
-        <div class="caption" style="text-align:center;">
-                    <%= button_to change_to_public_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
-                Change to public
-                <% end %>
-        </div>
 
         <div class="caption" style="text-align:center;">
-                    <%= button_to change_to_private_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
-                Change to private
-                <% end %>
+
+            <%= button_to post_path(@post.id), method: :delete, class: 'btn btn-primary btn-lg' do %>
+            Delete the Vote
+            <% end %>
+        </div>
+        <div class="caption" style="text-align:center;">
+            <%= button_to change_to_public_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
+            Change to public
+            <% end %>
+        </div>
+
+        <div class="caption" style="text-align:center;">
+            <%= button_to change_to_private_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
+            Change to private
+            <% end %>
+        </div>
+
+        <div class="caption" style="text-align:center;">
+            <%= button_to close_post_path(@post.id), method: :close, class: 'btn btn-primary' do %>
+            Close the Vote
+            <% end %>
         </div>
 
 
