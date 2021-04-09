@@ -8,6 +8,9 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.integer :vote_count, default: 0
       t.string :location
       
+      t.string :existingtime, default: ""
+      t.integer :close, default: 0
+      
       t.timestamps
     end
   end

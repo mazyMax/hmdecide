@@ -83,6 +83,13 @@ class PostsController < ApplicationController
     end
 
 
+    def close
+        Post.find(params[:id]).update({"close": 1})
+        flash[:notice] = "Vote closed!"
+        redirect_to post_path(params[:id])
+    end
+
+
    def show
        id = params[:id]
        @post = Post.find(id)

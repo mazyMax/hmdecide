@@ -80,7 +80,7 @@ class Post < ApplicationRecord
 
             remain_posts = unrecommended_posts
 
-            first_3_emergency = unrecommended_posts.sort_by{|u| u.created_at}.take(3)
+            first_3_emergency = unrecommended_posts.sort_by{|u| u.created_at}.reverse.take(3)
             remain_posts -= first_3_emergency
 
             first_5_follows = Post.where(user_id: follows_list).order(created_at: :desc)
@@ -130,6 +130,24 @@ class Post < ApplicationRecord
         sorted_posts = Post.where(id: sort_id_array).index_by(&:id).values_at(*sort_id_array)
         return sorted_posts
         
+    end
+
+    def self.get_follows(unchosen_posts, looker_id)
+        if looker_id == -1
+            return unchosen_posts
+        else
+            follows = User.find(looker_id).follows
+            follows_list = follows.split(",").map {|a| a.to_i}
+            return Post.where(user_id: follows_list).order(created_at: :desc)
+        end
+    end
+
+    def self.get_popular(unchosen_posts, looker_id)
+        if looker_id == -1
+            return unchosen_posts
+        else
+            return unchosen_posts.sort_by{|u| u.vote_count}.reverse
+        end
     end
 
 

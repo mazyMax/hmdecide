@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
     t.string "who_can_see", default: ""
     t.integer "vote_count", default: 0
     t.string "location"
+    t.string "existingtime", default: ""
+    t.integer "close", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_163257) do
     t.datetime "reset_password_sent_at"
     t.string "follows", default: ""
     t.string "followers", default: ""
+    t.integer "vote_count", default: 0
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

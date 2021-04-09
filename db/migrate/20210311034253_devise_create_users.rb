@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.string :follows,  array: true, default: ""
       t.string :followers,  array: true, default: ""
-
+      t.integer :vote_count, default: 0
       ## Rememberable
       t.datetime :remember_created_at
 

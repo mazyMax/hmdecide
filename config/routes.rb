@@ -19,6 +19,7 @@ Rails.application.routes.draw do
             post 'change_to_public', to: 'posts#change_to_public'
             post 'change_to_private', to: 'posts#change_to_private'
             post 'change_who_can_see', to: 'posts#change_who_can_see'
+            post 'close', to: 'posts#close'
         end
     end
 

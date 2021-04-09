@@ -12,23 +12,26 @@
 
 
     
-<form class = "button_to" method="get" action="/">
-
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
-    <button type="submit" class="btn btn-info">Nearby</button>
+    <form class = "button_to" method="get" action="/">
+      <button type="submit" class="btn btn-info">Nearby</button>
+      <div id = "demo"></div>
+    </form>
   </div>
   <div class="btn-group" role="group">
-    <button type="submit" class="btn btn-info">Following</button>
+    <form class = "button_to" method="get" action="/">
+      <button type="submit" class="btn btn-info">Following</button>
+      <input style="display:none" name="follow" value="follow">
+    </form>
   </div>
   <div class="btn-group" role="group">
-    <button type="submit" class="btn btn-info">Piazza</button>
+    <form class = "button_to" method="get" action="/">
+      <button type="submit" class="btn btn-info">Popular</button>
+      <input style="display:none" name="popular" value="popular">
+    </form>
   </div>
 </div>
-<div id = "demo">
-</div>
-</form>
-
 
 
 
