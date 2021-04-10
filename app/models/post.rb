@@ -162,7 +162,7 @@ class Post < ApplicationRecord
         location_list = location.split(",")
         sort_hash = Hash.new
         unsorted_posts.each do |p|
-            if p.location != ""
+            if p.location != nil
                 post_loction_list = p.location.split(",")
                 sort_hash[p.id] = Post.calculate_distance(location_list[0], location_list[1],post_loction_list[0],post_loction_list[1])
             end
