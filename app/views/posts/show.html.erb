@@ -1,9 +1,12 @@
+
 <tbody>
+    <div class="d1"><%= @post.description %></div>
     <% creater_of_the_post = User.find(@post.user_id) %>
-    <a class="user_of_this_profile" href="<%= user_path(creater_of_the_post) %>">
+    <div class="d1"><a class="user_of_this_profile" href="<%= user_path(creater_of_the_post) %>" display:block ;text-align:right>
         Created by <%= creater_of_the_post.name %>
     </a>
-        <%= @post.description %>
+    </div>
+    
         <% if current_user == nil %>
         <%flash[:notice] = "You have not logged in yet. Please log in your account to vote."%> 
 
@@ -82,7 +85,7 @@
         </div>
 
         <div class="caption" style="text-align:center;">
-            <%= button_to close_post_path(@post.id), method: :close, class: 'btn btn-primary' do %>
+            <%= button_to close_post_path(@post.id), method: :close, class: 'btn btn-primary btn-lg' do %>
             Close the Vote
             <% end %>
         </div>

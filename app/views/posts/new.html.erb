@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <%= f.label "existingtime(in minutes)" %>
-    <%= f.text_field :existingtime %>
+    <%= f.number_field :existingtime , min:0%>
   </div>
   <div class="form-group">
     <%= f.label "Hashtags(split by \",\")" %>

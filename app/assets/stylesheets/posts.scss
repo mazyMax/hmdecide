@@ -85,6 +85,7 @@
   .description{
     font-size: 25px;
     padding: 15px 0;
+      max-width:100%;
   }
 }
 
@@ -96,6 +97,11 @@
   }
 }
 
+.d1{
+    width:100%;
+    font-size: 15px;
+    clear:both;
+}
 
 
 .container {
