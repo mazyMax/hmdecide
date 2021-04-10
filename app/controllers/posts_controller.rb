@@ -13,11 +13,11 @@ class PostsController < ApplicationController
         puts post_params
         puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
         puts post_true_params
-        if post_true_params[:visibility] == "follow"
-            # choose several followers
-            puts"00000000000000000000000000000000000000000000000000000000000000000000000"
-            post_true_params[:who_can_see] = Post.who_can_see_preprocess(post_true_params[:user_id], post_true_params[:who_can_see])
-        end
+        # if post_true_params[:visibility] == "follow"
+        #     # choose several followers
+        #     puts"00000000000000000000000000000000000000000000000000000000000000000000000"
+        #     post_true_params[:who_can_see] = Post.who_can_see_preprocess(post_true_params[:user_id], post_true_params[:who_can_see])
+        # end
 
         @post = Post.new(post_true_params)      
         puts"11111111"
@@ -69,6 +69,14 @@ class PostsController < ApplicationController
         puts params
         Post.find(params[:id]).update({"visibility": "private", "who_can_see": ""})
         flash[:notice] = "Changed to private!"
+        redirect_to post_path(params[:id])
+    end
+
+    def change_to_followers_only
+        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        puts params
+        Post.find(params[:id]).update({"visibility": "follow"})
+        flash[:notice] = "Changed to followers only!"
         redirect_to post_path(params[:id])
     end
 

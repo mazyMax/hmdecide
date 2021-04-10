@@ -17,30 +17,30 @@ class Post < ApplicationRecord
         return Post.where("user_id = ?", user_id)
     end
 
-    def self.who_can_see_preprocess(creator_id, see_string)
-        see_list = Array.new
-        if see_string == "all"
+    # def self.who_can_see_preprocess(creator_id, see_string)
+    #     see_list = Array.new
+    #     if see_string == "all"
             
-            see_string = Post.find(creator_id).followers
-            see_list = see_string.split(',')
-            see_list << creator_id.to_s
-            see_list = see_list.uniq
-            puts "}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"
-            puts see_list
-            return see_list.join(",")
+    #         see_string = Post.find(creator_id).followers
+    #         see_list = see_string.split(',')
+    #         see_list << creator_id.to_s
+    #         see_list = see_list.uniq
+    #         puts "}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"
+    #         puts see_list
+    #         return see_list.join(",")
 
-        else
+    #     else
 
-            see_list = see_string.split(',')
-            see_list << creator_id.to_s
-            see_list = see_list.uniq
-            puts "}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"
-            puts see_list
-            return see_list.join(",")
+    #         see_list = see_string.split(',')
+    #         see_list << creator_id.to_s
+    #         see_list = see_list.uniq
+    #         puts "}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"
+    #         puts see_list
+    #         return see_list.join(",")
 
-        end
+    #     end
 
-    end
+    # end
 
     def self.closed_filter(unfiltered_posts, looker_id)
         remain_posts = unfiltered_posts
@@ -94,16 +94,20 @@ class Post < ApplicationRecord
             puts p.class
             if p.visibility == "private" and looker_id != p.user_id
                 remain_posts = remain_posts - Post.where("id = ?", p.id)
-            elsif p.visibility == "follow"
-                see_list = p.who_can_see.split(',')
-
-                puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-                puts see_list
-                if !(see_list.include?(looker_id.to_s))
-                    puts Post.where("id = ?", p.id).take.description
+            elsif p.visibility == "follow" and looker_id != p.user_id
+                follower_list = User.find(p.user_id).followers.split(",")
+                if !(follower_list.include?(looker_id.to_s))
                     remain_posts = remain_posts - Post.where("id = ?", p.id)
                 end
-                #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                # see_list = p.who_can_see.split(',')
+
+                # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+                # puts see_list
+                # if !(see_list.include?(looker_id.to_s))
+                #     puts Post.where("id = ?", p.id).take.description
+                #     remain_posts = remain_posts - Post.where("id = ?", p.id)
+                # end
+                # #followers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             end
         end

@@ -85,6 +85,12 @@
         </div>
 
         <div class="caption" style="text-align:center;">
+            <%= button_to change_to_followers_only_post_path(@post.id), method: :post, class: 'btn btn-primary btn-lg' do %>
+            Change to followers only
+            <% end %>
+        </div>
+
+        <div class="caption" style="text-align:center;">
             <%= button_to close_post_path(@post.id), method: :close, class: 'btn btn-primary btn-lg' do %>
             Close the Vote
             <% end %>

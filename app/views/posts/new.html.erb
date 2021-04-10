@@ -35,7 +35,11 @@
     <%= label :visibility, 'Private' %>
       <%= f.radio_button :visibility, 'follow', :checked => true %> 
     <%= label :visibility, 'Only Followers' %>
-    <%= f.text_field :who_can_see %>
+    <%
+=begin%>
+ <%= f.text_field :who_can_see %> 
+<%
+=end%>
   </div>
   
     <%
