@@ -15,8 +15,8 @@
             <%= "Expert Voter" %>
           <% elsif profile_user.vote_count.to_i >= 5 %>
             <%= "Passionate Voter" %>
-          <% elsif profile_user.vote_count.to_i >= 1 %>
-            <%= "Noob Voter" %>
+          <% elsif profile_user.vote_count.to_i >= 2 %>
+            <%= "Novice Voter" %>
           <% end %>
 
           <%= profile_user.name %>
