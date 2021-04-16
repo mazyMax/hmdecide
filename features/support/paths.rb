@@ -31,7 +31,7 @@ module NavigationHelpers
         
     when /^the edit profile\s?page$/ then '/users/1/edit'
         
-     when /^the choices\s?page$/ then '/choices/'+Choice.all.take.id.to_s
+    #  when /^the choices\s?page$/ then '/choices/'+Choice.all.take.id.to_s
         
     when /^the choice_upload\s?page$/ then '/choices/new'
         

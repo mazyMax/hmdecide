@@ -1,5 +1,6 @@
 Feature: After a user logged in, this user will get the access to post votes
 
+
 Background:
     Given the following users exist:
     | email              | password           |created_at         |updated_at          |
@@ -13,30 +14,22 @@ Background:
 #reference: https://gist.github.com/AbbyJonesDev/6855281
 #https://stackoverflow.com/questions/3724487/rails-root-directory-path
 #https://stackoverflow.com/questions/9667373/how-to-test-multiple-file-upload-using-cucumber-capybara
+# https://www.it1352.com/790033.html
 
-
-#Invalid to test
-#Scenario: Post a new vote successfully, Firstly upload a vote, and then upload several choices for the vote, then go to see its details
-#    Given I am on the home page
-#    And I follow "New Vote"
-#    Then I should be on the post_vote page
-#    Then I fill in "Description" with "what food"
-#    Then I follow "Add Choices"
+@javascript
+Scenario: Post a new vote successfully, Firstly upload a vote, and then upload several choices for the vote, then go to see its details
+   Given I am on the home page
+#    And I accept the location alert
+   And I follow "New Vote"
+   Then I should be on the post_vote page
+   Then I fill in "Description" with "what food"
+   And I upload an image named "steak.jpg"
+   Then I follow "Add Choices"
+   And I upload "steak.jpg" in the nested form
+   And I press "Create Vote"
+   Then I should be on the home page
+   And I should see "what food"
     
-    
-#    And I upload images named "chicken.jpg, steak.jpg, chicken.jpg, pizza.jpg"
-    #And I upload an image named "steak.jpg"
-    #And I upload an image named "chicken.jpg"
-    #And I upload an image named "pizza.jpg"
-#    And I press "Create Vote"
-#    Then I should be on the home page
-#    And I can see "what food"
-
-
-    
-    
-    
-   
 # Images are essential to create a vote
 Scenario: Post a new vote without image, and it should fail
     Given I am on the post_vote page

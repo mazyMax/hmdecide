@@ -7,6 +7,14 @@ require 'simplecov'
 SimpleCov.start 'rails'
 require 'cucumber/rails'
 
+
+require 'selenium-webdriver'
+require 'capybara/cucumber'
+require 'rspec/expectations'
+#Capybara.default_driver = :selenium
+Capybara.javascript_driver = :selenium
+# Capybara.server_port = 3001
+
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -58,4 +66,15 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+
+#  https://github.com/nbudin/devise_cas_authenticatable/issues/25
+# in file features/support/env.rb
+
+#Warden Helpers
+include Warden::Test::Helpers
+Warden.test_mode!
+After do
+  Warden.test_reset!                                                                                                                                                           
+end
 

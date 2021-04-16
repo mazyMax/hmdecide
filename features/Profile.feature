@@ -15,7 +15,6 @@ Scenario: Visit the profile page
     Then I should see "Profile"
     Then I follow "Profile"
     And I should see "Edit Profile"
-    And I should see "POSTS"
 
 
 Scenario: Redirect to edit profile page

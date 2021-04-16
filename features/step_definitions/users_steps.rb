@@ -28,26 +28,10 @@ Given /the following choices exist/ do |choices_table|
   end
 end
 
-
-
-
-
 Given /^PENDING/ do
     pending
 end
 
-#Given /post without image exist/ do
-#     hash_param = {}
-#     hash_param[:description] = "AAAAA"
-#     hash_param[:user_id] = User.where("email = ?", "728977862@qq.com").take.id
-
-#     hash_param[:image] = ActionDispatch::Http::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'))
-#     images_param = {"images"=>Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')}
-#     images_list_param = {"12345"=>images_param}       
-#     hash_param["choices_attributes"] = images_list_param
-#     
-#     post posts_path(post: hash_param)
-# end
 Given /One post named AAAA exist/ do
 
     post_true_params = {"description": "AAAA", "user_id": User.where("Email = ?", "728977862@qq.com").take.id}
@@ -76,37 +60,30 @@ Then /I should be redirected to the edit profile page of "([^"]*)"/ do |email|
   '/user/' + (User.where("email = ?", email).take.id).to_s + '/edit'
 end
 
+#https://github.com/teamcapybara/capybara/issues/2155
 Then /I upload an image named "([^"]*)"/ do |file_name|
     #hash_param = FactoryBot.attributes_for(:post)
     #hash_param[:user_id] = User.all.take.id
-    page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
+    file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
+    page.attach_file 'Image', file_name
+    # page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
+    # file_name = '/app/assets/images/' + file_name
 end
 
-Then /I upload images named "([^"]*)"/ do |file_names|
-    name_arr = file_names.split(", ")
-    p = page.find("#post_image", visible: :all)
-    #log(p.text)
-    p.attach_file Rails.root.join('app', 'assets', 'images', name_arr[0])
+# https://www.rubydoc.info/github/teamcapybara/capybara/Capybara/Node/Actions#attach_file-instance_method
+# https://stackoverflow.com/questions/37477426/capybara-match-element-id-with-regex
+Then /I upload "([^"]*)" in the nested form/ do |file_name|
+
+    file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
+    page.all('input[id^="post_choices_attributes_"]').each do |el|
+      el.attach_file file_name
+    end  
     
-    c1 = page.find("#choices_images", visible: :all)
-    c1.attach_file Rails.root.join('app', 'assets', 'images', name_arr[1])
     
-    #c2 = page.all('.nested-fields').last
-    #log(c2.text)
-    c2 = page.find("#post_choices_attributes", :text => /([^"]*)/, visible: :all)
-    #c2 = page.find(temp, visible: :all)
-    #find("img[src^='https://www.example.com/image']")
-    
-    c2.attach_file Rails.root.join('app', 'assets', 'images', name_arr[2])
-    log(c2.text)
-    #c2.attach_file Rails.root.join('app', 'assets', 'images', name_arr[2])
-    #hash_param = FactoryBot.attributes_for(:post)
-    #hash_param[:user_id] = User.all.take.id
-    #file_names.split(", ").each { |file_name|
-    #    page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
-    #}
-    #page.attach_file 'Images', [Rails.root.join('app', 'assets', 'images', name_arr[0]), Rails.root.join('app', 'assets', 'images', name_arr[1]), Rails.root.join('app', 'assets', 'images', name_arr[2])]
+    # page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
+    # file_name = '/app/assets/images/' + file_name
 end
+
 
 Then /I request "([^"]*)"/ do |post_name|
     #this redirection is assigned with constant value, which will be implemented fully in the next iteration
@@ -117,3 +94,36 @@ Then /I upvote for "([^"]*)"/ do |post_name|
     #this is also assigned with constant value, which will be implemented fully in the next iteration
     put like_choice_path(1)
 end
+
+Then /I click the image/ do 
+    #this is also assigned with constant value, which will be implemented fully in the next iteration
+    page.find("img").click
+end
+
+Then /I click Vote/ do 
+  #this is also assigned with constant value, which will be implemented fully in the next iteration
+  # allow(controller).to receive(:current_user).and_return(User.all.take)
+  put like_choice_path(1)
+  # page.find('[name=commit]').click
+  # page.all('input[id^="post_choices_attributes_"]').each do |el|
+  #   el.attach_file file_name
+  # end  
+  # page.find("button_to").click
+end
+
+Given /I logged in using "728977862@qq.com"/ do
+# https://github.com/nbudin/devise_cas_authenticatable/issues/25
+@pepito = FactoryBot.create(:user,
+  email: "728977862@qq.com", 
+  password: "4156GOGOGO",
+  created_at: "2021-03-13 11:04:06",
+  updated_at: "2021-03-13 11:04:06"
+)
+login_as(@pepito, :scope => "user")
+end
+
+# https://gist.github.com/leshill/870866
+# Then /I accept the location alert/ do 
+#   alert = page.driver.browser.switch_to.alert
+#   alert.send("Allow Location Access")
+# end
