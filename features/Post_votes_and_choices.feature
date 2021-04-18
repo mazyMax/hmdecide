@@ -30,6 +30,21 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
    And I press "Create Vote"
    Then I should be on the home page
    And I should see "what food"
+
+@javascript
+Scenario: Post a private vote
+   Given I am on the home page
+#    And I accept the location alert
+   And I follow "New Vote"
+   Then I should be on the post_vote page
+   Then I fill in "Description" with "what food"
+   And I initiate it with private
+   And I upload an image named "steak.jpg"
+   Then I follow "Add Choices"
+   And I upload "steak.jpg" in the nested form
+   And I press "Create Vote"
+   Then I should be on the home page
+   And I should see "what food"
     
 # Images are essential to create a vote
 Scenario: Post a new vote without image, and it should fail

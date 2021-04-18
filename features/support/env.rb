@@ -14,15 +14,26 @@ require 'rspec/expectations'
 #Capybara.default_driver = :selenium
 Capybara.javascript_driver = :selenium
 # Capybara.server_port = 3001
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app,
-    :browser => :firefox,
-  #   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox("firefoxOptions" => {
-  # "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } })
-    :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox(
-  "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } )
-)
+
+Capybara.register_driver :selenium do |app|      
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  profile['geolocation.default_content_setting'] = 1
+  # profile['default_content_setting_values.geolocation'] = 1
+  config = { :browser => :firefox, :profile => profile }    
+  Capybara::Selenium::Driver.new(app, config)
 end
+
+
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app,
+#     :browser => :firefox,
+#     :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox("Options" => {
+#   "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } })
+#   #   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox(
+#   # "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } )
+# )
+# end
+
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.

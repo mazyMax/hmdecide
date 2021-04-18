@@ -29,6 +29,8 @@ Scenario: I am able to change visibility
    Then I press "Change to followers only"
    Then I press "Close the Vote"
    Then I press "Delete the Vote"
+   Given I am on the home page
+   Then should not see "what food"
 
 @javascript
 Scenario: I am able to sort using different methods when I enable the location access
@@ -36,6 +38,7 @@ Scenario: I am able to sort using different methods when I enable the location a
    #And I accept the location alert
    And I follow "New Vote"
    Then I should be on the post_vote page
+   # Then I enable location permission
    Then I fill in "Description" with "what food"
    And I upload an image named "steak.jpg"
    Then I follow "Add Choices"
@@ -46,3 +49,6 @@ Scenario: I am able to sort using different methods when I enable the location a
    Then I press "Nearby"
    Then I press "Following"
    Then I press "Popular"
+   Given "728977862@qq.com" create a post named "test"
+   Given I am on the home page
+   Then I sort it using distance

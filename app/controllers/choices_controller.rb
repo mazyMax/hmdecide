@@ -6,15 +6,15 @@ class ChoicesController < ApplicationController
     #end
     
     
-    def show
-        @choices = Choice.all
-        id = params[:id]
-        @choice = Choice.find(id)
-    end
+    # def show
+    #     @choices = Choice.all
+    #     id = params[:id]
+    #     @choice = Choice.find(id)
+    # end
     
-    def create
-        @post = Choice.create(choice_params)
-    end
+    # def create
+    #     @post = Choice.create(choice_params)
+    # end
     
     
 

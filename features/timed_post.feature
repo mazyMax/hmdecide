@@ -1,4 +1,4 @@
-Feature: I can search posts
+Feature: When existing time expires, the post will close
 
 Background:
     User.destroy_all
@@ -8,24 +8,16 @@ Background:
 
 
 @javascript
-Scenario: I search content
+Scenario: When existing time expires, the post will close
     Given I login using "728977862@qq.com"
     Given I am on the home page
     And I follow "New Vote"
     Then I fill in "Description" with "what food"
-    Then I input to Hashtag using "steak"
+    Then I set existingtime with "0"
     And I upload an image named "steak.jpg"
     Then I follow "Add Choices"
     And I upload "steak.jpg" in the nested form
     And I initiate it with public
     And I press "Create Vote"
     Then I should be on the home page
-    Given I logout
-    Given I login using "12345678@qq.com"
-    Given I am on the home page
-    Then I search "food"
-    Then I press "Submit"
-    Then I should see "what food"
-    Then I search "steak"
-    Then I press "Submit"
-    Then I should see "what food"
+    Then I should not see "what food"

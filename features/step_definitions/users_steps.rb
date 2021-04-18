@@ -32,9 +32,9 @@ Given /^PENDING/ do
     pending
 end
 
-Given /One post named AAAA exist/ do
+Given /"([^"]*)" create a post named "([^"]*)"/ do |email,name|
 
-    post_true_params = {"description": "AAAA", "user_id": User.where("Email = ?", "728977862@qq.com").take.id}
+    post_true_params = {"description": name, "visibility": "public", "location": "37.090240,-95.712891", "user_id": User.where("Email = ?", email).take.id}
         post_true_params[:image] = Rack::Test::UploadedFile.new(Rails.root.join('spec', 'factories', 'images', 'harry.jpg'), 'image/jpg')
         @post = Post.new(post_true_params)
         @post.save
@@ -92,7 +92,8 @@ end
 
 Then /I click the image/ do 
     #this is also assigned with constant value, which will be implemented fully in the next iteration
-    page.find("img").click
+    # page.find("img").click
+    find(:xpath, "/html/body/div/div[3]/div[1]/a").click
 end
 
 Then /I click follow/ do 
@@ -107,6 +108,24 @@ end
 
 Then /I click Vote/ do 
   find(:xpath, "/html/body/div/div[3]/div[2]/form/button").click
+end
+
+Then /I search "([^"]*)"/ do |value|
+  field = find(:xpath, "//*[@id=\"search\"]").set(value)
+end
+
+Then /I input to Hashtag using "([^"]*)"/ do |name|
+  field = find(:xpath, "//*[@id=\"post_hash_tags\"]").set(name)
+end
+
+Then /I set existingtime with "([^"]*)"/ do |minute|
+  field = find(:xpath, "//*[@id=\"post_existingtime\"]").set(minute)
+end
+
+Then /I sort it using distance/ do
+  # get :index, params: {home: {"location"=>"37.090240,-95.712891", "controller"=>"home", "action"=>"index"}}
+  # get root_path(home: {"location"=>"37.090240,-95.712891"})
+  get root_path({"location"=>"37.090240,-95.712891"})
 end
 
 Given /I logged in using "728977862@qq.com"/ do
@@ -131,6 +150,10 @@ end
 
 Then /I initiate it with public/ do
   find(:xpath, "//*[@id=\"post_visibility_public\"]").click
+end
+
+Then /I initiate it with private/ do
+  find(:xpath, "//*[@id=\"post_visibility_private\"]").click
 end
 
 Given /I login using "([^"]*)"/ do |email|
