@@ -62,8 +62,7 @@ end
 
 #https://github.com/teamcapybara/capybara/issues/2155
 Then /I upload an image named "([^"]*)"/ do |file_name|
-    #hash_param = FactoryBot.attributes_for(:post)
-    #hash_param[:user_id] = User.all.take.id
+    #path should change when testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
     page.attach_file 'Image', file_name
     # page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
@@ -73,15 +72,11 @@ end
 # https://www.rubydoc.info/github/teamcapybara/capybara/Capybara/Node/Actions#attach_file-instance_method
 # https://stackoverflow.com/questions/37477426/capybara-match-element-id-with-regex
 Then /I upload "([^"]*)" in the nested form/ do |file_name|
-
+    #path should change when testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
     page.all('input[id^="post_choices_attributes_"]').each do |el|
       el.attach_file file_name
     end  
-    
-    
-    # page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
-    # file_name = '/app/assets/images/' + file_name
 end
 
 
@@ -100,30 +95,49 @@ Then /I click the image/ do
     page.find("img").click
 end
 
-Then /I click Vote/ do 
+Then /I click follow/ do 
   #this is also assigned with constant value, which will be implemented fully in the next iteration
-  # allow(controller).to receive(:current_user).and_return(User.all.take)
-  put like_choice_path(1)
-  # page.find('[name=commit]').click
-  # page.all('input[id^="post_choices_attributes_"]').each do |el|
-  #   el.attach_file file_name
-  # end  
-  # page.find("button_to").click
+  find(:xpath, "/html/body/div/div[4]/form[1]/button").click
+end
+
+Then /I click unfollow/ do 
+  #this is also assigned with constant value, which will be implemented fully in the next iteration
+  find(:xpath, "/html/body/div/div[4]/form[2]/button").click
+end
+
+Then /I click Vote/ do 
+  find(:xpath, "/html/body/div/div[3]/div[2]/form/button").click
 end
 
 Given /I logged in using "728977862@qq.com"/ do
-# https://github.com/nbudin/devise_cas_authenticatable/issues/25
-@pepito = FactoryBot.create(:user,
-  email: "728977862@qq.com", 
-  password: "4156GOGOGO",
-  created_at: "2021-03-13 11:04:06",
-  updated_at: "2021-03-13 11:04:06"
-)
-login_as(@pepito, :scope => "user")
+  # https://github.com/nbudin/devise_cas_authenticatable/issues/25
+  @current_user = User.create({
+    email: "728977862@qq.com", 
+    password: "4156GOGOGO",
+    created_at: "2021-03-13 11:04:06",
+    updated_at: "2021-03-13 11:04:06"}
+  )
+  login_as(@current_user, :scope => "user")
 end
 
+Given /I logout/ do
+  find(:xpath, "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[3]/a").click
+end
 # https://gist.github.com/leshill/870866
 # Then /I accept the location alert/ do 
 #   alert = page.driver.browser.switch_to.alert
 #   alert.send("Allow Location Access")
 # end
+
+Then /I initiate it with public/ do
+  find(:xpath, "//*[@id=\"post_visibility_public\"]").click
+end
+
+Given /I login using "([^"]*)"/ do |email|
+  login(email)
+
+end
+
+Given /^I wait for (\d+) seconds?$/ do |n|
+  sleep(n.to_i)
+end

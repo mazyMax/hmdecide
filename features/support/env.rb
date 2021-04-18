@@ -14,7 +14,15 @@ require 'rspec/expectations'
 #Capybara.default_driver = :selenium
 Capybara.javascript_driver = :selenium
 # Capybara.server_port = 3001
-
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app,
+    :browser => :firefox,
+  #   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox("firefoxOptions" => {
+  # "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } })
+    :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.firefox(
+  "prefs" => { "profile.default_content_setting_values.geolocation" => 1 } )
+)
+end
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -78,3 +86,34 @@ After do
   Warden.test_reset!                                                                                                                                                           
 end
 
+
+module UserSessionHelper
+  def current_user
+    @current_user
+  end
+
+  def login(email,user=nil)
+    if user.nil?
+      @current_user = FactoryBot.create(:user,
+        email: email, 
+        password: "4156GOGOGO",
+        created_at: "2021-03-13 11:04:06",
+        updated_at: "2021-03-13 11:04:06"
+      )
+    else
+      @current_user = user
+    end
+    visit new_user_session_path
+    fill_in 'Email', with: @current_user.email
+    fill_in 'Password', with: '4156GOGOGO'
+    click_button 'Log in'
+    # login_as(@current_user, :scope => "user")
+  end
+
+end
+
+RSpec.configure do |config|
+  config.include UserSessionHelper
+end if RSpec.respond_to?(:configure)
+
+World(UserSessionHelper) if respond_to?(:World)
