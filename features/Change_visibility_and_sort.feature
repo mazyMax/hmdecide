@@ -13,7 +13,6 @@ Background:
 @javascript
 Scenario: I am able to change visibility
    Given I am on the home page
-   #And I accept the location alert
    And I follow "New Vote"
    Then I should be on the post_vote page
    Then I fill in "Description" with "what food"
@@ -35,10 +34,8 @@ Scenario: I am able to change visibility
 @javascript
 Scenario: I am able to sort using different methods when I enable the location access
    Given I am on the home page
-   #And I accept the location alert
    And I follow "New Vote"
    Then I should be on the post_vote page
-   # Then I enable location permission
    Then I fill in "Description" with "what food"
    And I upload an image named "steak.jpg"
    Then I follow "Add Choices"

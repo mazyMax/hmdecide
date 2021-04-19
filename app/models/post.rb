@@ -2,11 +2,31 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :choices
     has_one_attached :image
+
     accepts_nested_attributes_for :choices, allow_destroy: true
     validate :image_presence
     
     def image_presence
+        
+        errors.add(:image, "Must be jpg or png file") unless  !(image.attached?) or image.content_type == 'image/jpeg' or image.content_type == 'image/png'
         errors.add(:image, "can't be blank") unless image.attached?
+    end
+
+    def self.sanity_check_choices_file_type(images_list_params)
+
+        images_list_params[:images].each do |img|
+            # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+            # puts img[1]['images'].content_type
+            if img[1]['images'].content_type != "image/jpeg" and img[1]['images'].content_type != "image/png"
+                return false
+            end
+            # choice_params = {images: img[1]['images'], 
+            #     user_id: post_params[:user_id], 
+            #     post_id: @post.id}
+            # Choice.create(choice_params)
+        end
+        return true
+
     end
     
     def self.Corresponding_Choices(post_id)
@@ -63,17 +83,17 @@ class Post < ApplicationRecord
     def self.close_posts_using_time(unfiltered_posts)
         remain_posts = unfiltered_posts
         unfiltered_posts.each do |p|
-            puts p.created_at.class
-            puts "created at"
-            puts p.created_at
-            puts "now"
-            puts Time.zone.now
-            puts "existing time"
-            puts Time.zone.now - p.created_at
-            puts (Time.zone.now - p.created_at)/60
-            puts "post existing time"
-            puts p.existingtime
-            puts p.existingtime.to_f
+            # puts p.created_at.class
+            # puts "created at"
+            # puts p.created_at
+            # puts "now"
+            # puts Time.zone.now
+            # puts "existing time"
+            # puts Time.zone.now - p.created_at
+            # puts (Time.zone.now - p.created_at)/60
+            # puts "post existing time"
+            # puts p.existingtime
+            # puts p.existingtime.to_f
             if p.existingtime != ""
                 if p.existingtime.to_f < (Time.zone.now - p.created_at)/60
                     Post.where("id = ?", p.id).update({"close": 1})
@@ -86,12 +106,12 @@ class Post < ApplicationRecord
     end
 
     def self.visibility_filter(unfiltered_posts, looker_id)
-        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        puts looker_id
+        # puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        # puts looker_id
         remain_posts = unfiltered_posts
         unfiltered_posts.each do |p|
-            puts p.visibility
-            puts p.class
+            # puts p.visibility
+            # puts p.class
             if p.visibility == "private" and looker_id != p.user_id
                 remain_posts = remain_posts - Post.where("id = ?", p.id)
             elsif p.visibility == "follow" and looker_id != p.user_id
@@ -116,14 +136,14 @@ class Post < ApplicationRecord
     end
 
     def self.recommend(unrecommended_posts, looker_id)
-        puts unrecommended_posts
+        # puts unrecommended_posts
         if looker_id == -1
             return unrecommended_posts
         else
             follows = User.find(looker_id).follows
             follows_list = follows.split(",").map {|a| a.to_i}
-            puts follows_list.to_s
-            puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+            # puts follows_list.to_s
+            # puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 
             remain_posts = unrecommended_posts
 
@@ -171,10 +191,10 @@ class Post < ApplicationRecord
                 sort_hash[p.id] = Post.calculate_distance(location_list[0], location_list[1],post_loction_list[0],post_loction_list[1])
             end
         end
-        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-        puts sort_hash.sort_by {|key,value| value}.to_s
+        # puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+        # puts sort_hash.sort_by {|key,value| value}.to_s
         sort_id_array = sort_hash.sort_by {|key,value| value}.map {|row| row[0]}
-        puts sort_id_array.to_s
+        # puts sort_id_array.to_s
         sorted_posts = Post.where(id: sort_id_array).index_by(&:id).values_at(*sort_id_array)
         return sorted_posts
         

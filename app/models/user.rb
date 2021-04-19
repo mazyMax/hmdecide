@@ -26,8 +26,8 @@ class User < ApplicationRecord
       creater_follower_list = creater_follower_list.uniq
       creater_of_the_post.update({"followers": creater_follower_list.join(",")})
 
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts follow_user.id.to_s + "  follows  " + creater_of_the_post.id.to_s
+      # puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      # puts follow_user.id.to_s + "  follows  " + creater_of_the_post.id.to_s
 
 
     end
@@ -51,8 +51,8 @@ class User < ApplicationRecord
       creater_follower_list = creater_follower_list.uniq
       creater_of_the_post.update({"followers": creater_follower_list.join(",")})
 
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts follow_user.id.to_s + "  unfollows  " + creater_of_the_post.id.to_s
+      # puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      # puts follow_user.id.to_s + "  unfollows  " + creater_of_the_post.id.to_s
 
     end
 

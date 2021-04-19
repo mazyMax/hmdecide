@@ -10,9 +10,9 @@ class PostsController < ApplicationController
             visibility: post_params[:visibility], who_can_see: post_params[:who_can_see], 
             location: post_params[:location], existingtime: post_params[:existingtime], 
             hash_tags: post_params[:hash_tags] }
-        puts post_params
-        puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
-        puts post_true_params
+        # puts post_params
+        # puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
+        # puts post_true_params
         # if post_true_params[:visibility] == "follow"
         #     # choose several followers
         #     puts"00000000000000000000000000000000000000000000000000000000000000000000000"
@@ -20,23 +20,33 @@ class PostsController < ApplicationController
         # end
 
         @post = Post.new(post_true_params)      
-        puts"11111111"
+        # puts"11111111"
 
         if @post.valid?   
             #puts"222222222222222"
             
             if post_params[:choices_attributes] != nil
-                @post.save
-                images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
-                images_list_params[:images].each do |img|
-                    choice_params = {images: img[1]['images'], 
-                        user_id: post_params[:user_id], 
-                        post_id: @post.id}
-                    Choice.create(choice_params)
+                # @post.save
+                # images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id], post_id: @post.id}
+                images_list_params = {images: post_params[:choices_attributes], user_id: post_params[:user_id]}
+                if Post.sanity_check_choices_file_type(images_list_params)
+                    @post.save
+                    images_list_params["post_id"] = @post.id
+                    images_list_params[:images].each do |img|
+                        choice_params = {images: img[1]['images'], 
+                            user_id: post_params[:user_id], 
+                            post_id: @post.id}
+                        Choice.create(choice_params)
 
-                end
-                
-                redirect_to root_path            
+                    end
+                    redirect_to root_path  
+
+                else
+
+                    flash[:notice] = "Choices must be jpg or png file"
+                    render :new
+
+                end          
             
             else
                 
@@ -46,7 +56,7 @@ class PostsController < ApplicationController
             
             
         else
-            puts"333333333333333333"
+            # puts"333333333333333333"
             flash.now[:messages] = @post.errors.full_messages[0]
             render :new
         end
@@ -56,25 +66,25 @@ class PostsController < ApplicationController
     end
 
     def change_to_public
-        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        puts params
-        puts Post.find(params[:id]).visibility
+        # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        # puts params
+        # puts Post.find(params[:id]).visibility
         Post.find(params[:id]).update({"visibility": "public", "who_can_see": ""})
         flash[:notice] = "Changed to public!"
         redirect_to post_path(params[:id])
     end
     
     def change_to_private
-        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        puts params
+        # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        # puts params
         Post.find(params[:id]).update({"visibility": "private", "who_can_see": ""})
         flash[:notice] = "Changed to private!"
         redirect_to post_path(params[:id])
     end
 
     def change_to_followers_only
-        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        puts params
+        # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        # puts params
         Post.find(params[:id]).update({"visibility": "follow"})
         flash[:notice] = "Changed to followers only!"
         redirect_to post_path(params[:id])
@@ -96,8 +106,8 @@ class PostsController < ApplicationController
 
 
     def close_posts
-        puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        puts params
+        # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        # puts params
         Post.find(params[:id]).update({"close": 1})
         flash[:notice] = "Vote closed!"
         redirect_to post_path(params[:id])

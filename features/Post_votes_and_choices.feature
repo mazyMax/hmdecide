@@ -20,7 +20,6 @@ Background:
 @javascript
 Scenario: Post a new vote successfully, Firstly upload a vote, and then upload several choices for the vote, then go to see its details
    Given I am on the home page
-#    And I accept the location alert
    And I follow "New Vote"
    Then I should be on the post_vote page
    Then I fill in "Description" with "what food"
@@ -34,7 +33,6 @@ Scenario: Post a new vote successfully, Firstly upload a vote, and then upload s
 @javascript
 Scenario: Post a private vote, other people should not see it
    Given I am on the home page
-#    And I accept the location alert
    And I follow "New Vote"
    Then I should be on the post_vote page
    Then I fill in "Description" with "what food"
@@ -70,6 +68,19 @@ Scenario: Close a vote, other people should not see it
    Given I login using "12345678@qq.com"
    Given I am on the home page
    And I should not see "what food"
+
+@javascript
+# Images are essential to create a vote
+Scenario: Post a new vote with wrong choice file type, and it should fail
+   Given I am on the home page
+   And I follow "New Vote"
+   Then I should be on the post_vote page
+   Then I fill in "Description" with "what food"
+   And I upload an image named "steak.jpg"
+   Then I follow "Add Choices"
+   And I upload "wrong_choice.txt" in the nested form
+   And I press "Create Vote"
+   Then I should see "Choices must be jpg or png file"
     
 # Images are essential to create a vote
 Scenario: Post a new vote without image, and it should fail
