@@ -28,9 +28,9 @@ class ChoicesController < ApplicationController
     end
     
     
-    private
-    def choice_params
-      params.require(:choice).permit(:description, :images, :post_id, :user_id)
-    end
+    # private
+    # def choice_params
+    #   params.require(:choice).permit(:description, :images, :post_id, :user_id)
+    # end
     
 end

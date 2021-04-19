@@ -19,16 +19,8 @@ class HomeController < ApplicationController
       puts params[:location]
       @posts = Post.visibility_filter(@posts, looker_id)
       @posts = Post.closed_filter(@posts, looker_id)
-      if params[:location] == "nolocation"
+      @posts = Post.sort_by_location(@posts, params[:location])
 
-        flash["notice"] = "We can not get your location."
-        redirect_to root_path
-
-      else
-
-        @posts = Post.sort_by_location(@posts, params[:location])
-
-      end
 
     elsif params[:follow] != nil
 
