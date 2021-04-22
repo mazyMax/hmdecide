@@ -30,17 +30,14 @@ $ rake cucumber
 $ rake spec
 ```
 
-Now the installation is done, then run: <br />
-`$ rails server -b 0.0.0.0` <br />
-
-Then you need to stop the server, restart it, click the BOX URL, And you will see the website's home page saying: "Help me Decide! Vote Anytime, Anywhere" <br />
+Start your local server, and you will see the website's home page saying: "Help me Decide! Vote Anytime, Anywhere" <br />
 Now you may see some posts on the home page, you have to sign up for our website before creating a new vote. After logging in, you could create a new vote, navigate to profile and update your account or log out. <br />
 To see cucumber test results, run: <br />
 `$ rake cucumber` <br />
 To see spec test coverage results, run: <br />
 `$ rake spec` <br />
 
-Our cucumber and spec testing results are as in the attached files.
+The screenshots of our cucumber and spec testing results are in our GitHub.
 
 ### 3. User stories and RSpec
 
