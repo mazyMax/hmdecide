@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "D:/SE_proj/iter3_final/hmdecide/app/models/user.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -70,38 +70,38 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/application_record.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/application_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/home_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/posts_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/posts_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/users_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/choices_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/choices_controller.rb": {
         "lines": [
           1,
           null,
@@ -141,13 +141,13 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/application_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/home_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
@@ -204,7 +204,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/posts_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/posts_controller.rb": {
         "lines": [
           1,
           1,
@@ -346,7 +346,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/post.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/post.rb": {
         "lines": [
           1,
           1,
@@ -575,7 +575,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/users_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -615,7 +615,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/choice.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/choice.rb": {
         "lines": [
           1,
           1,
@@ -634,11 +634,11 @@
         ]
       }
     },
-    "timestamp": 1618921444
+    "timestamp": 1619047847
   },
   "Cucumber Features": {
     "coverage": {
-      "D:/SE_proj/iter3_final/hmdecide/app/models/user.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -707,44 +707,44 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/application_record.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/application_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/application_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/home_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/posts_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/posts_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/helpers/users_helper.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/home_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
@@ -801,7 +801,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/post.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/post.rb": {
         "lines": [
           1,
           1,
@@ -1030,7 +1030,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/posts_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/posts_controller.rb": {
         "lines": [
           1,
           1,
@@ -1172,7 +1172,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/models/choice.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/models/choice.rb": {
         "lines": [
           1,
           1,
@@ -1190,7 +1190,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/users_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -1230,7 +1230,7 @@
           null
         ]
       },
-      "D:/SE_proj/iter3_final/hmdecide/app/controllers/choices_controller.rb": {
+      "/Users/peachy/Desktop/4156final/hmdecide/app/controllers/choices_controller.rb": {
         "lines": [
           1,
           null,
@@ -1271,6 +1271,6 @@
         ]
       }
     },
-    "timestamp": 1618921415
+    "timestamp": 1619047945
   }
 }

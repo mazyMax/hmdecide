@@ -64,12 +64,12 @@ end
 Then /I upload an image named "([^"]*)"/ do |file_name|
     #path should change when testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # if you are using linux, change the file path to be:
-    # page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
+    page.attach_file 'Image', Rails.root.join('app', 'assets', 'images', file_name)
     # Or, if you are using windows, using the file path like follows:
     # file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
 
-    file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
-    page.attach_file 'Image', file_name
+    #file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
+    #page.attach_file 'Image', file_name
     
     # file_name = '/app/assets/images/' + file_name
 end
@@ -83,7 +83,7 @@ Then /I upload "([^"]*)" in the nested form/ do |file_name|
     # Or, if you are using windows, using the file path like follows:
     # file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
 
-    file_name = "D:\\SE_proj\\iter3_final\\hmdecide\\app\\assets\\images\\" + file_name
+    file_name = Rails.root.join('app', 'assets', 'images', file_name)
     
     page.all('input[id^="post_choices_attributes_"]').each do |el|
       el.attach_file file_name
