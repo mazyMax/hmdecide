@@ -60,3 +60,4 @@ a. Fully Implemented: <br />
     User sign up, log in, log out, update user account like username and password, edit user's detailed information like bio and phone, forget password procedure. Home page show all the posts. 
     Search function by keywords or tags, upload a picture for post cover, upload image for a voting choice, dynamic choice adding button, initialize a post and voting choice or
     choices in one view page with/without location access as well as existing time limit, delete post, close vote, and change visibility function. Follow/unfollow other users, view posts by following users' posts, popularity, and nearby location function. Better UI design and interaction experience. Fix all bugs. 100% spec and 100% Cucumber coverage.<br />
+
